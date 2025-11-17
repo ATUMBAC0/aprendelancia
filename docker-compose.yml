@@ -15,6 +15,11 @@ services:
     container_name: api-gateway
     ports:
       - "8000:8000"
+    environment:
+      - AUTH_SERVICE_URL=http://auth-service:8001
+      - CURSOS_SERVICE_URL=http://cursos-service:8002
+      - EVALUACIONES_SERVICE_URL=http://evaluaciones-service:8003
+      - PROGRESO_SERVICE_URL=http://progreso-service:8004
     depends_on:
       - auth-service
     # Aquí puedes agregar los otros servicios base
@@ -43,31 +48,77 @@ services:
   # TODO: Copiar y modificar "service1" para cada servicio según el tema seleccionado
   
   # Microservicio de Nombre_del_microservicio
-  service1-service:
-     build: ./services/service1 
-     container_name: service1-service
-     ports:
-       - "8002:8002"
-     environment:
-       - DATABASE_URL=postgresql://user:password@service1-db:5432/service1_db
-     depends_on:
-       - service1-db
+  # Microservicio Cursos
+  cursos-service:
+    build: ./services/cursos
+    container_name: cursos-service
+    ports:
+      - "8002:8002"
+    environment:
+      - DATABASE_URL=postgresql://user:password@cursos-db:5432/cursos_db
+    depends_on:
+      - cursos-db
 
-  # Base de datos para el servicio1
-  service1-db:
-     image: postgres:latest
-     container_name: service1-db
-     environment:
-       - POSTGRES_USER=user
-       - POSTGRES_PASSWORD=password
-       - POSTGRES_DB=service1_db
-     ports:
-       - "5432:5432"
-     volumes:
-       - service1_data:/var/lib/postgresql/data
+  cursos-db:
+    image: postgres:latest
+    container_name: cursos-db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=cursos_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - cursos_data:/var/lib/postgresql
+
+  # Microservicio Evaluaciones
+  evaluaciones-service:
+    build: ./services/evaluaciones
+    container_name: evaluaciones-service
+    ports:
+      - "8003:8003"
+    environment:
+      - DATABASE_URL=postgresql://user:password@evaluaciones-db:5432/evaluaciones_db
+    depends_on:
+      - evaluaciones-db
+
+  evaluaciones-db:
+    image: postgres:latest
+    container_name: evaluaciones-db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=evaluaciones_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - evaluaciones_data:/var/lib/postgresql
+
+  # Microservicio Progreso
+  progreso-service:
+    build: ./services/progreso
+    container_name: progreso-service
+    ports:
+      - "8004:8004"
+    environment:
+      - DATABASE_URL=postgresql://user:password@progreso-db:5432/progreso_db
+    depends_on:
+      - progreso-db
+
+  progreso-db:
+    image: postgres:latest
+    container_name: progreso-db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=progreso_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - progreso_data:/var/lib/postgresql
 
 volumes:
   auth_data:
-  service1_data:
-  service2_data:
-  service3_data:
+  cursos_data:
+  evaluaciones_data:
+  progreso_data:

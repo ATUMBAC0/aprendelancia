@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ restaurante.get('nombre') or restaurante.get('name') }}</h2>
+<p>{{ restaurante.get('direccion','') }}</p>
+<p class="muted">{{ restaurante.get('descripcion','') }}</p>
+
+{% if session.get('last_order_id') %}
+    <p><a class="btn" href="{{ url_for('order_status', order_id=session.get('last_order_id')) }}">Ver último pedido</a></p>
+{% endif %}
+
+<script>
+// Poll menu stock periodically and update the DOM so the user sees changes after ordering
+(function(){
+    const restId = "{{ restaurante.get('id') }}";
+    async function updateMenu(){
+        try{
+            const resp = await fetch(`/api/restaurantes/${restId}/menu`);
+            if(!resp.ok) return;
+            const data = await resp.json();
+            const menu = (data && data.menu) ? data.menu : data;
+            if(!Array.isArray(menu)) return;
+            menu.forEach(it => {
+                const id = it.id || it.item_id;
+                const stockEl = document.getElementById('stock-' + id);
+                if(stockEl) stockEl.innerText = (typeof it.cantidad !== 'undefined') ? it.cantidad : (it.cantidad || '');
+            });
+        }catch(e){
+            // ignore errors silently
+        }
+    }
+
+    // Update right away and then every 3s
+    updateMenu();
+    setInterval(updateMenu, 3000);
+})();
+</script>
+
+<script>
+// Client-side live preview of the order and basic validation to avoid accidental submit/reload
+(function(){
+    const form = document.getElementById('order-form');
+    if(!form) return;
+    const preview = document.getElementById('order-preview');
+    const previewItems = document.getElementById('preview-items');
+    const previewTotal = document.getElementById('preview-total');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    function parseInputs(){
+        const data = [];
+        let total = 0;
+        const inputs = form.querySelectorAll('input[name^="item_"]');
+        inputs.forEach(inp => {
+            const qty = parseInt(inp.value, 10) || 0;
+            if(qty > 0){
+                const itemId = inp.name.split('_',2)[1];
+                const row = inp.closest('tr');
+                const name = row ? (row.querySelector('td') ? row.querySelector('td').innerText.trim() : itemId) : itemId;
+                const priceCell = row ? row.querySelectorAll('td')[1] : null;
+                const price = priceCell ? parseFloat(priceCell.innerText) || 0 : 0;
+                const stockEl = document.getElementById('stock-' + itemId);
+                const stock = stockEl ? (parseInt(stockEl.innerText,10) || 0) : 0;
+                data.push({item_id: itemId, nombre: name, cantidad: qty, precio: price, stock: stock});
+                total += price * qty;
+            }
+        });
+        return {items: data, total};
+    }
+
+    function renderPreview(){
+        const parsed = parseInputs();
+        previewItems.innerHTML = '';
+        // If no items selected, hide preview and disable submit
+        if(parsed.items.length === 0){
+            preview.style.display = 'none';
+            submitBtn.disabled = true;
+            previewTotal.innerText = '0.00';
+            const note = document.getElementById('preview-note');
+            if(note) note.innerText = 'Revisa las cantidades y tu dirección antes de confirmar.';
+            return;
+        }
+
+        // Check stock for all items; if any requested > stock, show message and disable submit
+        let stockOk = true;
+        let stockMsg = '';
+        parsed.items.forEach(it => {
+            if(typeof it.stock !== 'undefined' && it.cantidad > it.stock){
+                stockOk = false;
+                stockMsg = `Stock insuficiente para ${it.nombre} (disponible: ${it.stock})`;
+            }
+        });
+
+        if(!stockOk){
+            const li = document.createElement('li');
+            li.innerText = stockMsg;
+            previewItems.appendChild(li);
+            previewTotal.innerText = parsed.total.toFixed(2);
+            preview.style.display = '';
+            submitBtn.disabled = true;
+            const note = document.getElementById('preview-note');
+            if(note) note.innerText = stockMsg;
+            return;
+        }
+
+        // Otherwise render selected items normally
+        parsed.items.forEach(it => {
+            const li = document.createElement('li');
+            li.innerText = `${it.nombre} x ${it.cantidad} — $${(it.precio*it.cantidad).toFixed(2)}`;
+            previewItems.appendChild(li);
+        });
+        previewTotal.innerText = parsed.total.toFixed(2);
+        preview.style.display = '';
+        submitBtn.disabled = false;
+    }
+
+    // Prevent Enter key on number inputs from submitting the form (common UX issue)
+    form.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' && e.target && e.target.matches('input[type="number"]')){
+            e.preventDefault();
+        }
+    });
+
+    // Listen for changes on quantity inputs
+    {% extends "base.html" %}
+
+    {% block content %}
+    <div class="card">
+        <h2>Esta plantilla de restaurante ha sido reemplazada por la vista de cursos.</h2>
+        <p>Para ver los cursos disponibles, ve a <a href="{{ url_for('cursos_list') }}">Cursos</a>.</p>
+    </div>
+    {% endblock %}
+</script>

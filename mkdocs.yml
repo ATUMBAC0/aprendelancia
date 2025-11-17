@@ -1,0 +1,21 @@
+#Documentation de plataforma Aprendelandia
+# enlace local de documentacion 
+#sleep 5 && curl -s http://127.0.0.1:8080 | head -20
+
+site_name: Aprendelancia Docs
+theme:
+  name: material
+  palette:
+    primary: blue
+    accent: orange
+nav:
+  - Home: index.md
+  - Arquitectura: architecture.md
+  - Setup & Configuración: setup.md
+  - API Reference: api.md
+  - Desarrollo: development.md
+  - Entrega Incremental: entrega.md
+docs_dir: docs
+markdown_extensions:
+  - codehilite
+  - extra

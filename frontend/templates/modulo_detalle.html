@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Módulo {{ modulo_id }}</h2>
+    {% if lecciones %}
+        <ul>
+        {% for lec in lecciones %}
+            <li>{{ lec.titulo }} — duración: {{ lec.duracion_minutos }} min</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay lecciones disponibles.</p>
+    {% endif %}
+</div>
+{% endblock %}

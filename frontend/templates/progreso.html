@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Mi Progreso</h2>
+    <p style="color: #666; margin-bottom: 2rem;">Aquí puedes ver el progreso de todos tus cursos inscritos.</p>
+    
+    {% if progreso.cursos %}
+        <div style="display: grid; gap: 1.5rem;">
+        {% for c in progreso.cursos %}
+            <div style="background: white; border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                    <div>
+                        <h3 style="margin: 0 0 0.5rem 0; color: #2c3e50;">
+                            {{ c.curso_titulo if c.curso_titulo else c.curso_id }}
+                        </h3>
+                        {% if c.curso_descripcion %}
+                        <p style="color: #7f8c8d; margin: 0; font-size: 0.9rem;">{{ c.curso_descripcion }}</p>
+                        {% endif %}
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-size: 1.5rem; font-weight: bold; color: {{ '#27ae60' if c.completado_pct >= 70 else '#f39c12' if c.completado_pct >= 40 else '#e74c3c' }};">
+                            {{ c.completado_pct }}%
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Barra de progreso -->
+                <div style="background: #ecf0f1; height: 24px; border-radius: 12px; overflow: hidden; margin: 1rem 0;">
+                    <div style="background: {{ '#27ae60' if c.completado_pct >= 70 else '#f39c12' if c.completado_pct >= 40 else '#e74c3c' }}; height: 100%; width: {{ c.completado_pct }}%; transition: width 0.3s;"></div>
+                </div>
+                
+                <!-- Detalles del progreso -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #ecf0f1;">
+                    <div>
+                        <p style="margin: 0; color: #95a5a6; font-size: 0.85rem;">Tiempo invertido</p>
+                        <p style="margin: 0.25rem 0 0 0; font-weight: bold; color: #34495e;">{{ c.tiempo_invertido_horas }} horas</p>
+                    </div>
+                    
+                    {% if c.calificacion %}
+                    <div>
+                        <p style="margin: 0; color: #95a5a6; font-size: 0.85rem;">Calificación</p>
+                        <p style="margin: 0.25rem 0 0 0; font-weight: bold; color: {{ '#27ae60' if c.calificacion >= 70 else '#e74c3c' }};">
+                            {{ c.calificacion }}/100
+                        </p>
+                    </div>
+                    {% else %}
+                    <div>
+                        <p style="margin: 0; color: #95a5a6; font-size: 0.85rem;">Estado</p>
+                        <p style="margin: 0.25rem 0 0 0; font-weight: bold; color: #f39c12;">En progreso</p>
+                    </div>
+                    {% endif %}
+                    
+                    <div>
+                        <p style="margin: 0; color: #95a5a6; font-size: 0.85rem;">Última actividad</p>
+                        <p style="margin: 0.25rem 0 0 0; font-weight: bold; color: #34495e;">{{ c.fecha_ultima_actividad }}</p>
+                    </div>
+                    
+                    {% if c.ultima_leccion %}
+                    <div>
+                        <p style="margin: 0; color: #95a5a6; font-size: 0.85rem;">Última lección</p>
+                        <p style="margin: 0.25rem 0 0 0; font-weight: bold; color: #34495e;">{{ c.ultima_leccion }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Botón de acción -->
+                <div style="margin-top: 1rem;">
+                    {% if c.completado_pct < 100 %}
+                    <a href="{{ url_for('curso_detail', curso_id=c.curso_id) }}" 
+                       style="display: inline-block; background: #3498db; color: white; padding: 0.5rem 1.5rem; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                        Continuar curso →
+                    </a>
+                    {% else %}
+                    <span style="color: #27ae60; font-weight: bold;">✓ Curso completado</span>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        
+        <!-- Resumen general -->
+        <div style="margin-top: 2rem; padding: 1.5rem; background: #ecf0f1; border-radius: 8px;">
+            <h3 style="margin-top: 0;">Resumen General</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 0.9rem;">Total de cursos</p>
+                    <p style="margin: 0.5rem 0 0 0; font-size: 1.5rem; font-weight: bold; color: #2c3e50;">{{ progreso.cursos|length }}</p>
+                </div>
+                <div>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 0.9rem;">Cursos completados</p>
+                    <p style="margin: 0.5rem 0 0 0; font-size: 1.5rem; font-weight: bold; color: #27ae60;">
+                        {{ progreso.cursos|selectattr('completado_pct', 'equalto', 100)|list|length }}
+                    </p>
+                </div>
+                <div>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 0.9rem;">Horas totales invertidas</p>
+                    <p style="margin: 0.5rem 0 0 0; font-size: 1.5rem; font-weight: bold; color: #3498db;">
+                        {{ progreso.cursos|sum(attribute='tiempo_invertido_horas') }} h
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div style="text-align: center; padding: 3rem; background: #ecf0f1; border-radius: 8px;">
+            <p style="font-size: 1.2rem; color: #95a5a6; margin: 0 0 1rem 0;">No hay progreso registrado aún.</p>
+            <a href="{{ url_for('cursos_list') }}" 
+               style="display: inline-block; background: #3498db; color: white; padding: 0.75rem 2rem; border-radius: 4px; text-decoration: none;">
+                Explorar cursos disponibles
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

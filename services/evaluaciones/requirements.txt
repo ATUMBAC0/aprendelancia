@@ -1,0 +1,5 @@
+# Dependencias básicas para un servicio FastAPI
+fastapi
+uvicorn
+
+# TODO: Agrega las librerías específicas de tu servicio aquí

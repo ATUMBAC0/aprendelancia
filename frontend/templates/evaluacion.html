@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>{{ cuestionario.titulo }}</h2>
+    <form id="eval-form">
+        {% for p in cuestionario.preguntas %}
+            <div class="question">
+                <p><strong>{{ loop.index }}. {{ p.texto }}</strong></p>
+                {% if p.tipo == 'opcion' %}
+                    {% for opt in p.opciones %}
+                        <label><input type="radio" name="{{ p.id }}" value="{{ loop.index0 }}"> {{ opt }}</label><br>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="button" onclick="submitEval()">Enviar</button>
+    </form>
+    <div id="result" style="margin-top:1rem;"></div>
+</div>
+
+<script>
+async function submitEval(){
+    const form = document.getElementById('eval-form');
+    const data = {};
+    const inputs = form.querySelectorAll('input');
+    inputs.forEach(i=>{ if(i.checked) data[i.name]= parseInt(i.value); });
+    const path = window.location.pathname.split('/').pop();
+    const resp = await fetch(`/api/evaluaciones/${path}/responder`, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({respuestas: data})});
+    const json = await resp.json();
+    document.getElementById('result').innerText = JSON.stringify(json);
+}
+</script>
+
+{% endblock %}

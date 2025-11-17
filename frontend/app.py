@@ -1,54 +1,350 @@
-# /frontend/app.py
+# /frontend/app.py - Plataforma de Cursos Online
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify, flash
 import os
 import requests
+from typing import Optional
+import json
+import uuid
+import threading
+from datetime import datetime
 
 app = Flask(__name__)
 
 # Obtén la URL del API Gateway desde las variables de entorno.
-# Esta variable debe estar configurada en el docker-compose.yml.
 API_GATEWAY_URL = os.getenv("API_GATEWAY_URL", "http://localhost:8000")
+app.secret_key = os.getenv("FLASK_SECRET", "dev-secret-change-me")
 
-@app.route("/")
-def index():
-    """Ruta de la página de inicio."""
+
+# --- Mock Store Fallback ---
+class MockStore:
+    def __init__(self, path=None):
+        base = os.path.dirname(__file__)
+        self.path = path or os.path.join(base, 'mock_data.json')
+        self.lock = threading.Lock()
+        self._load_or_init()
+
+    def _load_or_init(self):
+        if os.path.exists(self.path):
+            try:
+                with open(self.path, 'r') as f:
+                    self.data = json.load(f)
+            except Exception:
+                self.data = self._default()
+                self._save()
+        else:
+            self.data = self._default()
+            self._save()
+
+    def _default(self):
+        return {
+            "cursos": [
+                {"id": "curso1", "titulo": "Python Básico", "descripcion": "Aprende Python desde cero", "instructor_id": "inst1", "duracion_horas": 40, "rating": 4.8},
+                {"id": "curso2", "titulo": "Web Development", "descripcion": "Desarrollo web con Flask", "instructor_id": "inst2", "duracion_horas": 60, "rating": 4.6},
+            ],
+            "modulos": {
+                "curso1": [
+                    {"id": "mod1", "curso_id": "curso1", "titulo": "Fundamentos", "descripcion": "Variables, tipos de datos", "orden": 1},
+                    {"id": "mod2", "curso_id": "curso1", "titulo": "Funciones", "descripcion": "Definición y uso de funciones", "orden": 2},
+                ]
+            },
+            "lecciones": {
+                "mod1": [
+                    {"id": "lec1", "modulo_id": "mod1", "titulo": "Variables y Tipos", "contenido": "https://example.com/video1", "duracion_minutos": 30, "orden": 1},
+                    {"id": "lec2", "modulo_id": "mod1", "titulo": "Operadores", "contenido": "https://example.com/video2", "duracion_minutos": 25, "orden": 2},
+                ]
+            },
+            "progreso": {}
+        }
+
+    def _save(self):
+        tmp = self.path + '.tmp'
+        with open(tmp, 'w') as f:
+            json.dump(self.data, f, default=str)
+        os.replace(tmp, self.path)
+
+    def list_cursos(self):
+        return list(self.data.get('cursos', []))
+
+    def get_curso(self, curso_id):
+        for c in self.data.get('cursos', []):
+            if c.get('id') == curso_id:
+                return c
+        return None
+
+    def get_modulos(self, curso_id):
+        return self.data.get('modulos', {}).get(curso_id, [])
+
+    def get_lecciones(self, modulo_id):
+        return self.data.get('lecciones', {}).get(modulo_id, [])
+
+
+mock_store = MockStore()
+
+
+def _call_service(method, service, path, **kwargs):
+    """Helper to call services via gateway with fallback to mock"""
+    headers = kwargs.get('headers', {})
+    if 'access_token' in session:
+        headers['Authorization'] = f"Bearer {session['access_token']}"
+    kwargs['headers'] = headers
     
-    # TODO: Haz una llamada al API Gateway para obtener datos, si es necesario.
-    # Por ejemplo, para obtener la lista de items de un servicio:
-    # try:
-    #     response = requests.get(f"{API_GATEWAY_URL}/api/v1/[recurso]")
-    #     response.raise_for_status()  # Lanza un error para códigos de estado 4xx/5xx
-    #     items = response.json()
-    # except requests.exceptions.RequestException as e:
-    #     print(f"Error al conectar con el API Gateway: {e}")
-    #     items = []
-
-    # Pasa los datos a la plantilla para renderizarlos.
-    return render_template("index.html", title="Inicio")
-
-@app.route("/new-item", methods=["GET", "POST"])
-def new_item():
-    """Ruta para crear un nuevo ítem."""
-    if request.method == "POST":
-        # TODO: Recoge los datos del formulario.
-        # item_data = {
-        #     "name": request.form.get("name"),
-        #     "description": request.form.get("description")
-        # }
+    try:
+        url = f"{API_GATEWAY_URL}/api/v1/{service}/{path}"
+        if method == 'GET':
+            r = requests.get(url, **kwargs, timeout=3)
+        elif method == 'POST':
+            r = requests.post(url, **kwargs, timeout=3)
+        else:
+            return None
         
-        # TODO: Envía los datos al API Gateway para crear un nuevo recurso.
-        # try:
-        #     response = requests.post(f"{API_GATEWAY_URL}/api/v1/[recurso]", json=item_data)
-        #     response.raise_for_status()
-        #     return redirect(url_for("index"))
-        # except requests.exceptions.RequestException as e:
-        #     print(f"Error al crear el ítem: {e}")
-        #     return "Error al crear el ítem.", 500
+        if r.status_code in [200, 201]:
+            return r.json()
+    except Exception:
+        pass
+    return None
+
+
+@app.route('/')
+@app.route('/index')
+def index():
+    """Página de inicio"""
+    return render_template('index.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """Página de login"""
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        role = request.form.get('role', 'estudiante')
+        
+        # Intentar login via API
+        resp = _call_service('POST', 'auth', 'login', json={'email': email, 'password': password, 'role': role})
+        
+        if resp and 'access_token' in resp:
+            session['access_token'] = resp['access_token']
             
-        return "Método POST no implementado.", 501
+            # Obtener info completa del usuario desde /me
+            user_info = _call_service('GET', 'auth', 'me')
+            # /me responde {"user": {...}}
+            if user_info and isinstance(user_info, dict) and user_info.get('user'):
+                u = user_info.get('user', {})
+                session['user'] = {
+                    'id': u.get('id') or u.get('email'),
+                    'email': u.get('email'),
+                    'role': u.get('role', 'estudiante'),
+                    'nombre': u.get('nombre', ''),
+                }
+            else:
+                session['user'] = {'email': email, 'id': email, 'role': role}
+            
+            flash('Login exitoso', 'success')
+            return redirect(url_for('dashboard'))
+        else:
+            flash('Email o contraseña incorrectos', 'error')
+    
+    return render_template('login.html')
 
-    return render_template("form.html", title="Nuevo Ítem")
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    """Página de registro"""
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        role = request.form.get('role', 'estudiante')
+        nombre = request.form.get('nombre', '')
+        
+        resp = _call_service('POST', 'auth', 'register', json={
+            'email': email,
+            'password': password,
+            'role': role,
+            'nombre': nombre
+        })
+        
+        if resp:
+            flash('Usuario registrado exitosamente. Por favor inicia sesión.', 'success')
+            return redirect(url_for('login'))
+        else:
+            flash('Error al registrar usuario', 'error')
+    
+    return render_template('register.html')
+
+
+@app.route('/logout')
+def logout():
+    """Logout"""
+    session.clear()
+    flash('Sesión cerrada', 'info')
+    return redirect(url_for('index'))
+
+
+@app.route('/dashboard')
+def dashboard():
+    """Panel principal del estudiante"""
+    if 'user' not in session:
+        flash('Por favor inicia sesión', 'warning')
+        return redirect(url_for('login'))
+    
+    user = session.get('user', {})
+    estudiante_id = user.get('email')  # Usar email como ID de estudiante
+    
+    # Inicializar stats con valores por defecto
+    stats = {
+        'num_cursos': 0,
+        'promedio_progreso': 0,
+        'evaluaciones_pendientes': 0
+    }
+    cursos_progreso = []
+    
+    if estudiante_id:
+        # Obtener progreso del estudiante
+        resp_progreso = _call_service('GET', 'progreso', f'estudiantes/{estudiante_id}/cursos')
+        progreso_data = resp_progreso if resp_progreso else {'cursos': []}
+        
+        cursos_progreso = progreso_data.get('cursos', [])
+        num_cursos = len(cursos_progreso)
+        
+        # Calcular promedio de progreso
+        if num_cursos > 0:
+            total_progreso = sum(c.get('completado_pct', 0) for c in cursos_progreso)
+            promedio_progreso = round(total_progreso / num_cursos)
+        else:
+            promedio_progreso = 0
+        
+        # Contar evaluaciones pendientes (cursos con progreso > 50% sin calificación)
+        evaluaciones_pendientes = sum(1 for c in cursos_progreso if c.get('completado_pct', 0) > 50 and c.get('calificacion') is None)
+        
+        # Enriquecer con info de cursos para mostrar títulos
+        cursos_info = {}
+        resp_cursos = _call_service('GET', 'cursos', '')
+        if resp_cursos:
+            for c in resp_cursos.get('cursos', []):
+                cursos_info[c.get('id')] = c
+        for item in cursos_progreso:
+            cid = item.get('curso_id')
+            if cid in cursos_info:
+                item['curso_titulo'] = cursos_info[cid].get('titulo', 'Sin título')
+                item['curso_descripcion'] = cursos_info[cid].get('descripcion', '')
+
+        stats = {
+            'num_cursos': num_cursos,
+            'promedio_progreso': promedio_progreso,
+            'evaluaciones_pendientes': evaluaciones_pendientes
+        }
+    
+    return render_template('dashboard.html', cursos=cursos_progreso, stats=stats, user=user)
+
+
+@app.route('/cursos')
+def cursos_list():
+    """Lista de cursos disponibles"""
+    resp = _call_service('GET', 'cursos', '')
+    cursos = resp.get('cursos', []) if resp else mock_store.list_cursos()
+    return render_template('cursos.html', cursos=cursos)
+
+
+@app.route('/cursos/<curso_id>')
+def curso_detail(curso_id):
+    """Detalle de un curso"""
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    
+    resp = _call_service('GET', 'cursos', curso_id)
+    curso = resp if resp else mock_store.get_curso(curso_id)
+    
+    if not curso:
+        flash('Curso no encontrado', 'error')
+        return redirect(url_for('cursos_list'))
+    
+    # Obtener módulos
+    resp_modulos = _call_service('GET', 'cursos', f"{curso_id}/modulos")
+    modulos = resp_modulos.get('modulos', []) if resp_modulos else mock_store.get_modulos(curso_id)
+    
+    return render_template('cursos.html', curso=curso, modulos=modulos)
+
+
+@app.route('/cursos/<curso_id>/modulos/<modulo_id>')
+def modulo_detail(curso_id, modulo_id):
+    """Detalle de un módulo"""
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    
+    # Obtener lecciones
+    resp = _call_service('GET', 'cursos', f"modulos/{modulo_id}/lecciones")
+    lecciones = resp.get('lecciones', []) if resp else mock_store.get_lecciones(modulo_id)
+    
+    return render_template('modulo_detalle.html', curso_id=curso_id, modulo_id=modulo_id, lecciones=lecciones)
+
+
+@app.route('/progreso')
+def progreso():
+    """Ver progreso del estudiante"""
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    
+    estudiante_id = session.get('user', {}).get('email')
+    resp = _call_service('GET', 'progreso', f"estudiantes/{estudiante_id}/cursos")
+    progreso_data = resp if resp else {"cursos": []}
+    
+    # Obtener info de cursos para mostrar títulos
+    cursos_info = {}
+    resp_cursos = _call_service('GET', 'cursos', '')
+    if resp_cursos:
+        cursos_list = resp_cursos.get('cursos', [])
+        for c in cursos_list:
+            cursos_info[c.get('id')] = c
+    
+    # Enriquecer progreso con info de cursos
+    for item in progreso_data.get('cursos', []):
+        curso_id = item.get('curso_id')
+        if curso_id in cursos_info:
+            item['curso_titulo'] = cursos_info[curso_id].get('titulo', 'Sin título')
+            item['curso_descripcion'] = cursos_info[curso_id].get('descripcion', '')
+    
+    return render_template('progreso.html', progreso=progreso_data)
+
+
+@app.route('/evaluaciones/<cuestionario_id>')
+def evaluacion(cuestionario_id):
+    """Realizar una evaluación"""
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    
+    resp = _call_service('GET', 'evaluaciones', cuestionario_id)
+    cuestionario = resp if resp else None
+    
+    if not cuestionario:
+        flash('Evaluación no encontrada', 'error')
+        return redirect(url_for('dashboard'))
+    
+    return render_template('evaluacion.html', cuestionario=cuestionario)
+
+
+@app.route('/api/evaluaciones/<cuestionario_id>/responder', methods=['POST'])
+def responder_evaluacion(cuestionario_id):
+    """API endpoint para enviar respuestas"""
+    if 'user' not in session:
+        return jsonify({'error': 'No autenticado'}), 401
+    
+    data = request.get_json()
+    estudiante_id = session.get('user', {}).get('id')
+    
+    resp = _call_service('POST', 'evaluaciones', f"{cuestionario_id}/responder?estudiante_id={estudiante_id}", json=data)
+    
+    if resp:
+        return jsonify(resp)
+    else:
+        return jsonify({'error': 'Error procesando evaluación'}), 500
+
+
+@app.route('/health')
+def health():
+    """Health check"""
+    return jsonify({'status': 'ok'})
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)

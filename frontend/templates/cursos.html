@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    {% if curso %}
+        <h2>{{ curso.titulo }}</h2>
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 1rem;">
+            <div>
+                <p style="color: #7f8c8d; font-size: 1.1rem; line-height: 1.6;">{{ curso.descripcion }}</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; padding: 1rem; background: #ecf0f1; border-radius: 8px;">
+                    <div>
+                        <p style="margin: 0; color: #95a5a6; font-size: 0.85rem;">Duración</p>
+                        <p style="margin: 0.25rem 0 0 0; font-weight: bold; color: #34495e;">{{ curso.duracion_horas }} horas</p>
+                    </div>
+                    <div>
+                        <p style="margin: 0; color: #95a5a6; font-size: 0.85rem;">Rating</p>
+                        <p style="margin: 0.25rem 0 0 0; font-weight: bold; color: #f39c12;">⭐ {{ curso.rating }}/5.0</p>
+                    </div>
+                    <div>
+                        <p style="margin: 0; color: #95a5a6; font-size: 0.85rem;">Nivel</p>
+                        <p style="margin: 0.25rem 0 0 0; font-weight: bold; color: #34495e;">{{ curso.nivel if curso.nivel else 'Básico' }}</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Módulos del Curso</h3>
+                {% if modulos %}
+                    <div style="display: grid; gap: 0.75rem; margin-top: 1rem;">
+                        {% for m in modulos %}
+                        <a href="{{ url_for('modulo_detail', curso_id=curso.id, modulo_id=m.id) }}" 
+                           style="display: block; background: white; border: 1px solid #ddd; padding: 1rem; border-radius: 6px; text-decoration: none; color: inherit; transition: all 0.2s;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="background: #3498db; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">{{ m.orden }}</span>
+                                <div style="flex: 1;">
+                                    <h4 style="margin: 0 0 0.25rem 0; color: #2c3e50;">{{ m.titulo }}</h4>
+                                    <p style="margin: 0; color: #95a5a6; font-size: 0.9rem;">{{ m.descripcion }}</p>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p style="color: #95a5a6; font-style: italic;">No hay módulos disponibles para este curso.</p>
+                {% endif %}
+            </div>
+            
+            <div>
+                <div style="background: #ecf0f1; padding: 1.5rem; border-radius: 8px; position: sticky; top: 1rem;">
+                    <h3 style="margin-top: 0;">Instructor</h3>
+                    <p style="font-weight: bold; color: #2c3e50;">{{ curso.instructor_id }}</p>
+                    
+                    <button style="width: 100%; background: #27ae60; color: white; border: none; padding: 1rem; border-radius: 6px; font-size: 1rem; font-weight: bold; cursor: pointer; margin-top: 1rem;">
+                        Inscribirse al Curso
+                    </button>
+                    
+                    <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #bdc3c7;">
+                        <p style="margin: 0; color: #7f8c8d; font-size: 0.9rem;">Este curso incluye:</p>
+                        <ul style="margin: 0.5rem 0; padding-left: 1.5rem; color: #34495e; font-size: 0.9rem;">
+                            <li>{{ curso.duracion_horas }} horas de contenido</li>
+                            <li>Acceso de por vida</li>
+                            <li>Certificado de finalización</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <h2>Cursos Disponibles</h2>
+        <p style="color: #7f8c8d; margin-bottom: 2rem;">Explora nuestra colección de cursos de Ingeniería en Sistemas.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+            {% if cursos %}
+                {% for curso in cursos %}
+                <div style="background: white; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;">
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem;">
+                        <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem;">{{ curso.titulo }}</h3>
+                        <p style="margin: 0; opacity: 0.9; font-size: 0.85rem;">{{ curso.nivel if curso.nivel else 'Básico' }}</p>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <p style="color: #7f8c8d; font-size: 0.95rem; line-height: 1.5; min-height: 3rem; margin: 0 0 1rem 0;">
+                            {{ curso.descripcion[:100] }}{% if curso.descripcion|length > 100 %}...{% endif %}
+                        </p>
+                        
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0; padding-bottom: 1rem; border-bottom: 1px solid #ecf0f1;">
+                            <div>
+                                <p style="margin: 0; color: #95a5a6; font-size: 0.8rem;">Duración</p>
+                                <p style="margin: 0.25rem 0 0 0; font-weight: bold; color: #2c3e50; font-size: 0.9rem;">{{ curso.duracion_horas }}h</p>
+                            </div>
+                            <div>
+                                <p style="margin: 0; color: #95a5a6; font-size: 0.8rem;">Rating</p>
+                                <p style="margin: 0.25rem 0 0 0; font-weight: bold; color: #f39c12; font-size: 0.9rem;">⭐ {{ curso.rating }}</p>
+                            </div>
+                        </div>
+                        
+                        <a href="{{ url_for('curso_detail', curso_id=curso.id) }}" 
+                           style="display: block; text-align: center; background: #3498db; color: white; padding: 0.75rem; text-decoration: none; border-radius: 6px; font-weight: 500; transition: background 0.2s;">
+                            Ver Detalles →
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; background: #ecf0f1; border-radius: 8px;">
+                    <p style="color: #95a5a6; font-size: 1.1rem;">No hay cursos disponibles en este momento.</p>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

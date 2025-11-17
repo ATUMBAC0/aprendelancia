@@ -21,13 +21,12 @@ router = APIRouter(prefix="/api/v1")
 
 # Define los microservicios y sus URLs.
 # La URL debe coincidir con el nombre del servicio definido en docker-compose.yml.
-# El puerto debe ser el del contenedor (ej. auth-service:8001).
+# El puerto debe ser el del contenedor (ej. authentication:8001).
 SERVICES = {
     "auth": os.getenv("AUTH_SERVICE_URL", "http://auth-service:8001"),
-    # TODO: Agrega los URLs de los otros microservicios de tu tema.
-    # "service1_name": os.getenv("NAME1_SERVICE_URL", "http://service1-service:8002"),
-    # "service2_name": os.getenv("NAME2_SERVICE_URL", "http://service2-service:8003"),
-    # "service3_name": os.getenv("NAME3_SERVICE_URL", "http://service3-service:8004"),
+    "cursos": os.getenv("CURSOS_SERVICE_URL", "http://cursos-service:8002"),
+    "evaluaciones": os.getenv("EVALUACIONES_SERVICE_URL", "http://evaluaciones-service:8003"),
+    "progreso": os.getenv("PROGRESO_SERVICE_URL", "http://progreso-service:8004"),
 }
 
 # TODO: Implementa una ruta genérica para redirigir peticiones GET.
@@ -39,7 +38,12 @@ async def forward_get(service_name: str, path: str, request: Request):
     service_url = f"{SERVICES[service_name]}/{path}"
     
     try:
-        response = requests.get(service_url, params=request.query_params)
+        # Forward query params and authorization header if present
+        headers = {}
+        auth = request.headers.get("Authorization")
+        if auth:
+            headers["Authorization"] = auth
+        response = requests.get(service_url, params=request.query_params, headers=headers)
         response.raise_for_status()
         return response.json()
     except requests.exceptions.RequestException as e:
@@ -54,8 +58,22 @@ async def forward_post(service_name: str, path: str, request: Request):
     service_url = f"{SERVICES[service_name]}/{path}"
     
     try:
-        # Pasa los datos JSON del cuerpo de la petición.
-        response = requests.post(service_url, json=await request.json())
+        # Forward JSON body, query params and authorization header
+        headers = {}
+        auth = request.headers.get("Authorization")
+        if auth:
+            headers["Authorization"] = auth
+        body = None
+        try:
+            body = await request.json()
+        except Exception:
+            body = None
+        response = requests.post(
+            service_url,
+            json=body,
+            params=request.query_params,
+            headers=headers,
+        )
         response.raise_for_status()
         return response.json()
     except requests.exceptions.RequestException as e:
