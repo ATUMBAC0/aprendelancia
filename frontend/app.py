@@ -91,6 +91,7 @@ def _call_service(method, service, path, **kwargs):
     
     try:
         url = f"{API_GATEWAY_URL}/api/v1/{service}/{path}"
+        print(f"[DEBUG] Calling {method} {url}")  # Debug
         if method == 'GET':
             r = requests.get(url, **kwargs, timeout=3)
         elif method == 'POST':
@@ -98,9 +99,15 @@ def _call_service(method, service, path, **kwargs):
         else:
             return None
         
+        print(f"[DEBUG] Response status: {r.status_code}")  # Debug
         if r.status_code in [200, 201]:
-            return r.json()
-    except Exception:
+            result = r.json()
+            print(f"[DEBUG] Response data: {str(result)[:200]}")  # Debug primeros 200 chars
+            return result
+        else:
+            print(f"[DEBUG] Error response: {r.text[:200]}")  # Debug
+    except Exception as e:
+        print(f"[DEBUG] Exception calling service: {e}")  # Debug
         pass
     return None
 
@@ -183,15 +190,62 @@ def logout():
 
 @app.route('/dashboard')
 def dashboard():
-    """Panel principal del estudiante"""
+    """Panel principal - redirige según rol"""
     if 'user' not in session:
         flash('Por favor inicia sesión', 'warning')
         return redirect(url_for('login'))
     
     user = session.get('user', {})
-    estudiante_id = user.get('email')  # Usar email como ID de estudiante
+    role = user.get('role', 'estudiante')
     
-    # Inicializar stats con valores por defecto
+    # Redirigir según rol
+    if role == 'instructor':
+        return dashboard_instructor()
+    else:
+        return dashboard_estudiante()
+
+
+def dashboard_instructor():
+    """Dashboard para instructores"""
+    user = session.get('user', {})
+    instructor_email = user.get('email')
+    
+    # Obtener todos los cursos
+    resp_cursos = _call_service('GET', 'cursos', '')
+    todos_cursos = resp_cursos.get('cursos', []) if resp_cursos else []
+    
+    # Filtrar cursos del instructor (por instructor_id)
+    mis_cursos = [c for c in todos_cursos if c.get('instructor_id') == instructor_email or c.get('instructor_id') == 'inst1']
+    
+    stats = {
+        'num_cursos': len(mis_cursos),
+        'total_estudiantes': len(mis_cursos) * 12,  # Mock: ~12 estudiantes por curso
+        'evaluaciones_pendientes': len(mis_cursos) * 3  # Mock: ~3 evaluaciones pendientes por curso
+    }
+    
+    # Enriquecer cursos para el template
+    cursos_enriquecidos = []
+    for c in mis_cursos:
+        cursos_enriquecidos.append({
+            'curso_id': c.get('id'),
+            'curso_titulo': c.get('titulo'),
+            'curso_descripcion': c.get('descripcion'),
+            'duracion_horas': c.get('duracion_horas'),
+            'rating': c.get('rating')
+        })
+    
+    return render_template('dashboard_instructor.html', cursos=cursos_enriquecidos, stats=stats, user=user)
+
+
+def dashboard_estudiante():
+    """Dashboard para estudiantes"""
+    user = session.get('user', {})
+    estudiante_id = user.get('email') or user.get('id')
+    
+    print(f"[DEBUG DASHBOARD] User: {user}")  # Debug
+    print(f"[DEBUG DASHBOARD] Estudiante ID: {estudiante_id}")  # Debug
+    
+    # Inicializar stats
     stats = {
         'num_cursos': 0,
         'promedio_progreso': 0,
@@ -200,29 +254,39 @@ def dashboard():
     cursos_progreso = []
     
     if estudiante_id:
-        # Obtener progreso del estudiante
+        # Asignar cursos aleatorios si no tiene ninguno (POST automático)
         resp_progreso = _call_service('GET', 'progreso', f'estudiantes/{estudiante_id}/cursos')
-        progreso_data = resp_progreso if resp_progreso else {'cursos': []}
+        print(f"[DEBUG DASHBOARD] Progreso response: {resp_progreso}")  # Debug
         
+        # Si no hay cursos, hacer POST para asignar aleatorios
+        if not resp_progreso or not resp_progreso.get('cursos'):
+            print(f"[DEBUG DASHBOARD] No hay cursos, asignando...")  # Debug
+            _call_service('POST', 'progreso', f'estudiantes/{estudiante_id}/asignar-cursos', json={})
+            resp_progreso = _call_service('GET', 'progreso', f'estudiantes/{estudiante_id}/cursos')
+        
+        progreso_data = resp_progreso if resp_progreso else {'cursos': []}
         cursos_progreso = progreso_data.get('cursos', [])
         num_cursos = len(cursos_progreso)
         
-        # Calcular promedio de progreso
+        print(f"[DEBUG DASHBOARD] Num cursos: {num_cursos}")  # Debug
+        
+        # Calcular promedio
         if num_cursos > 0:
             total_progreso = sum(c.get('completado_pct', 0) for c in cursos_progreso)
             promedio_progreso = round(total_progreso / num_cursos)
         else:
             promedio_progreso = 0
         
-        # Contar evaluaciones pendientes (cursos con progreso > 50% sin calificación)
+        # Evaluaciones pendientes
         evaluaciones_pendientes = sum(1 for c in cursos_progreso if c.get('completado_pct', 0) > 50 and c.get('calificacion') is None)
         
-        # Enriquecer con info de cursos para mostrar títulos
+        # Enriquecer con info de cursos
         cursos_info = {}
         resp_cursos = _call_service('GET', 'cursos', '')
         if resp_cursos:
             for c in resp_cursos.get('cursos', []):
                 cursos_info[c.get('id')] = c
+        
         for item in cursos_progreso:
             cid = item.get('curso_id')
             if cid in cursos_info:

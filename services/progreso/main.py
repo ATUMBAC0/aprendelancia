@@ -40,30 +40,45 @@ def health_check():
 def progreso_estudiante(estudiante_id: str):
     # Si no hay progreso para este estudiante, asigna cursos aleatorios en caliente
     existing = DATA.get("progreso", {}).get(estudiante_id)
-    if not existing:
+    
+    # Verificar si no existe o si existe pero está vacío
+    if not existing or not existing.get("cursos"):
         try:
-            resp = requests.get(f"{CURSOS_SERVICE_URL}/")
+            resp = requests.get(f"{CURSOS_SERVICE_URL}/", timeout=3)
             resp.raise_for_status()
             cursos = resp.json().get("cursos", [])
-        except Exception:
+        except Exception as e:
+            print(f"Error obteniendo cursos: {e}")
             cursos = []
 
-        seleccion = random.sample(cursos, k=min(3, len(cursos))) if cursos else []
-        cursos_asignados = []
-        for c in seleccion:
-            pct = random.randint(10, 95)
-            item = {
-                "curso_id": c.get("id"),
-                "completado_pct": pct,
-                "tiempo_invertido_horas": random.randint(1, 40),
-                "ultima_leccion": "",
-                "fecha_inicio": "",
-                "fecha_ultima_actividad": "",
-                "calificacion": None if pct < 75 else round(random.uniform(3.0, 5.0), 1),
-            }
-            cursos_asignados.append(item)
-        DATA["progreso"][estudiante_id] = {"cursos": cursos_asignados}
-        return DATA["progreso"][estudiante_id]
+        if cursos:
+            # Seleccionar entre 3 y 5 cursos aleatorios
+            num_cursos = min(random.randint(3, 5), len(cursos))
+            seleccion = random.sample(cursos, k=num_cursos)
+            cursos_asignados = []
+            
+            for c in seleccion:
+                pct = random.randint(10, 95)
+                # Calificación solo si completado >= 75%
+                calificacion = None if pct < 75 else round(random.uniform(3.5, 5.0), 1)
+                
+                item = {
+                    "curso_id": c.get("id"),
+                    "completado_pct": pct,
+                    "tiempo_invertido_horas": random.randint(1, 40),
+                    "ultima_leccion": f"Lección {random.randint(1, 10)}",
+                    "fecha_inicio": "2025-01-15",
+                    "fecha_ultima_actividad": "2025-11-17",
+                    "calificacion": calificacion,
+                }
+                cursos_asignados.append(item)
+            
+            DATA["progreso"][estudiante_id] = {"cursos": cursos_asignados}
+            return DATA["progreso"][estudiante_id]
+        else:
+            # No hay cursos disponibles
+            return {"cursos": []}
+    
     return existing
 
 
@@ -82,4 +97,51 @@ def create_progreso(progreso: Progreso):
     # Agregar nuevo
     estudiante_data["cursos"].append(progreso.dict(exclude={"estudiante_id"}))
     return {"message": "Progreso creado", "progreso": progreso.dict()}
+
+
+@app.post("/estudiantes/{estudiante_id}/asignar-cursos")
+def asignar_cursos_aleatorios(estudiante_id: str):
+    """
+    Asignar cursos aleatorios con progreso y calificaciones a un estudiante.
+    Este endpoint POST fuerza la asignación de cursos nuevos.
+    """
+    try:
+        resp = requests.get(f"{CURSOS_SERVICE_URL}/")
+        resp.raise_for_status()
+        cursos = resp.json().get("cursos", [])
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error obteniendo cursos: {e}")
+
+    if not cursos:
+        raise HTTPException(status_code=404, detail="No hay cursos disponibles")
+
+    # Seleccionar entre 3 y 5 cursos aleatorios
+    num_cursos = min(random.randint(3, 5), len(cursos))
+    seleccion = random.sample(cursos, k=num_cursos)
+    
+    cursos_asignados = []
+    for c in seleccion:
+        pct = random.randint(5, 100)
+        # Calificación solo si progreso >= 80%
+        calificacion = round(random.uniform(3.5, 5.0), 1) if pct >= 80 else None
+        
+        item = {
+            "curso_id": c.get("id"),
+            "completado_pct": pct,
+            "tiempo_invertido_horas": random.randint(1, 50),
+            "ultima_leccion": f"Lección {random.randint(1, 10)}",
+            "fecha_inicio": "2025-01-15",
+            "fecha_ultima_actividad": "2025-11-17",
+            "calificacion": calificacion,
+        }
+        cursos_asignados.append(item)
+    
+    # Reemplazar cursos del estudiante
+    DATA["progreso"][estudiante_id] = {"cursos": cursos_asignados}
+    
+    return {
+        "message": f"{num_cursos} cursos asignados exitosamente",
+        "estudiante_id": estudiante_id,
+        "cursos": cursos_asignados
+    }
 

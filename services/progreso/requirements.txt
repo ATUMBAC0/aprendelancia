@@ -1,5 +1,7 @@
 # Dependencias básicas para un servicio FastAPI
 fastapi
 uvicorn
+requests
+pydantic
 
 # TODO: Agrega las librerías específicas de tu servicio aquí

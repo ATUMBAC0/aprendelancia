@@ -102,8 +102,10 @@ services:
       - "8004:8004"
     environment:
       - DATABASE_URL=postgresql://user:password@progreso-db:5432/progreso_db
+      - CURSOS_SERVICE_URL=http://cursos-service:8002
     depends_on:
       - progreso-db
+      - cursos-service
 
   progreso-db:
     image: postgres:latest
