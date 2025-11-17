@@ -2,8 +2,8 @@
  
 | Código | Nombre | Correo |
 |:---|:---|:---|
-| 1085257327 |William Diaz Josal | anyerson.tumbaco.0709@miremington.edu.co |
-| 1085330709 | Anyerson Tumbaco Rojas | william.diaz.7327@miremington.edu.co |
+| 1085257327 |William Diaz Josa | William.diaz.7327@miremington.edu.co  |
+| 1085330709 | Anyerson Tumbaco Rojas | anyerson.tumbaco.0709@miremington.edu.co |
  
 ---
  
