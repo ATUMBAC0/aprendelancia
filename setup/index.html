@@ -1,0 +1,1421 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../architecture/">
+      
+      
+        <link rel="next" href="../api/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Setup & Configuración - Aprendelancia Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#setup-configuracion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Aprendelancia Docs" class="md-header__button md-logo" aria-label="Aprendelancia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Aprendelancia Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Setup & Configuración
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Aprendelancia Docs" class="md-nav__button md-logo" aria-label="Aprendelancia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Aprendelancia Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup & Configuración
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup & Configuración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requisitos Previos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opcion-1-docker-compose-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opción 1: Docker Compose (Recomendado)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opción 1: Docker Compose (Recomendado)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-clonar-el-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1: Clonar el repositorio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-configurar-variables-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2: Configurar variables de entorno
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-levantar-los-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3: Levantar los servicios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-acceder-a-la-plataforma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4: Acceder a la plataforma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-probar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5: Probar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opcion-2-local-sin-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opción 2: Local (Sin Docker)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opción 2: Local (Sin Docker)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-crear-virtualenv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1: Crear virtualenv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-instalar-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2: Instalar dependencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-configurar-bases-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3: Configurar bases de datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 3: Configurar bases de datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PostgreSQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MongoDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-configurar-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4: Configurar .env
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-ejecutar-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5: Ejecutar servicios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acceder
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-port-already-in-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker: "Port already in use"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-connection-refused" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PostgreSQL: "Connection refused"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-connection-refused" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MongoDB: "Connection refused"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis-connection-refused" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redis: "Connection refused"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-not-found-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Module not found" errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandos-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos Útiles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comandos Útiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker Compose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables de Entorno
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desarrollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entrega/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entrega Incremental
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requisitos Previos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opcion-1-docker-compose-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opción 1: Docker Compose (Recomendado)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opción 1: Docker Compose (Recomendado)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-clonar-el-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1: Clonar el repositorio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-configurar-variables-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2: Configurar variables de entorno
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-levantar-los-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3: Levantar los servicios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-acceder-a-la-plataforma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4: Acceder a la plataforma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-probar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5: Probar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opcion-2-local-sin-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opción 2: Local (Sin Docker)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opción 2: Local (Sin Docker)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-crear-virtualenv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1: Crear virtualenv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-instalar-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2: Instalar dependencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-configurar-bases-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3: Configurar bases de datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 3: Configurar bases de datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PostgreSQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MongoDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-configurar-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4: Configurar .env
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-ejecutar-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5: Ejecutar servicios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acceder
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-port-already-in-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker: "Port already in use"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-connection-refused" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PostgreSQL: "Connection refused"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-connection-refused" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MongoDB: "Connection refused"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis-connection-refused" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redis: "Connection refused"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-not-found-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Module not found" errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandos-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos Útiles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comandos Útiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker Compose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables de Entorno
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="setup-configuracion">Setup &amp; Configuración</h1>
+<h2 id="requisitos-previos">Requisitos Previos</h2>
+<ul>
+<li><strong>Docker</strong> y <strong>Docker Compose</strong> (recomendado)</li>
+<li>O <strong>Python 3.8+</strong>, <strong>PostgreSQL</strong>, <strong>MongoDB</strong>, <strong>Redis</strong> (para local)</li>
+<li><strong>Git</strong></li>
+</ul>
+<h2 id="opcion-1-docker-compose-recomendado">Opción 1: Docker Compose (Recomendado)</h2>
+<h3 id="paso-1-clonar-el-repositorio">Paso 1: Clonar el repositorio</h3>
+<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>&lt;repo-url&gt;
+<span class="nb">cd</span><span class="w"> </span>aprendelancia
+</code></pre></div>
+
+<h3 id="paso-2-configurar-variables-de-entorno">Paso 2: Configurar variables de entorno</h3>
+<div class="codehilite"><pre><span></span><code>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+</code></pre></div>
+
+<p>Revisar y ajustar <code>.env</code> si es necesario.</p>
+<h3 id="paso-3-levantar-los-servicios">Paso 3: Levantar los servicios</h3>
+<div class="codehilite"><pre><span></span><code>docker-compose<span class="w"> </span>up<span class="w"> </span>--build
+</code></pre></div>
+
+<p>Esto toma unos minutos en la primera ejecución. Verás algo como:</p>
+<div class="codehilite"><pre><span></span><code>auth-service_1         | Uvicorn running on http://0.0.0.0:8001
+cursos-service_1       | Uvicorn running on http://0.0.0.0:8002
+evaluaciones-service_1 | Uvicorn running on http://0.0.0.0:8003
+progreso-service_1     | Uvicorn running on http://0.0.0.0:8004
+api-gateway_1          | Uvicorn running on http://0.0.0.0:8000
+frontend_1             | Running on http://0.0.0.0:5000
+</code></pre></div>
+
+<h3 id="paso-4-acceder-a-la-plataforma">Paso 4: Acceder a la plataforma</h3>
+<ul>
+<li><strong>Frontend</strong>: http://localhost:5000</li>
+<li><strong>Gateway API Docs</strong>: http://localhost:8000/docs</li>
+<li><strong>Gateway Redoc</strong>: http://localhost:8000/redoc</li>
+</ul>
+<h3 id="paso-5-probar">Paso 5: Probar</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Health check</span>
+curl<span class="w"> </span>http://localhost:8000/api/v1/auth/health
+curl<span class="w"> </span>http://localhost:8000/api/v1/cursos/health
+</code></pre></div>
+
+<hr />
+<h2 id="opcion-2-local-sin-docker">Opción 2: Local (Sin Docker)</h2>
+<h3 id="paso-1-crear-virtualenv">Paso 1: Crear virtualenv</h3>
+<div class="codehilite"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">  </span><span class="c1"># Linux/Mac</span>
+<span class="c1"># o</span>
+.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">  </span><span class="c1"># Windows</span>
+</code></pre></div>
+
+<h3 id="paso-2-instalar-dependencias">Paso 2: Instalar dependencias</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Instalaciones comunes</span>
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip<span class="w"> </span>setuptools
+
+<span class="c1"># Services</span>
+<span class="k">for</span><span class="w"> </span>service<span class="w"> </span><span class="k">in</span><span class="w"> </span>authentication<span class="w"> </span>cursos<span class="w"> </span>evaluaciones<span class="w"> </span>progreso<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>services/<span class="nv">$service</span>/requirements.txt
+<span class="k">done</span>
+
+<span class="c1"># Gateway y Frontend</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>api-gateway/requirements.txt
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>frontend/requirements.txt
+</code></pre></div>
+
+<h3 id="paso-3-configurar-bases-de-datos">Paso 3: Configurar bases de datos</h3>
+<h4 id="postgresql">PostgreSQL</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># macOS</span>
+brew<span class="w"> </span>install<span class="w"> </span>postgresql
+
+<span class="c1"># Linux (Debian/Ubuntu)</span>
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>postgresql<span class="w"> </span>postgresql-contrib
+
+<span class="c1"># Crear bases de datos</span>
+createdb<span class="w"> </span>cursos_db
+createdb<span class="w"> </span>evaluaciones_db
+createdb<span class="w"> </span>progreso_db
+
+<span class="c1"># Verificar</span>
+psql<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;cursos_db|evaluaciones_db|progreso_db&quot;</span>
+</code></pre></div>
+
+<h4 id="mongodb">MongoDB</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># macOS</span>
+brew<span class="w"> </span>install<span class="w"> </span>mongodb-community
+
+<span class="c1"># Linux (Debian/Ubuntu)</span>
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mongodb
+
+<span class="c1"># Iniciar servicio</span>
+brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>mongodb-community<span class="w">  </span><span class="c1"># macOS</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mongod<span class="w">  </span><span class="c1"># Linux</span>
+</code></pre></div>
+
+<h4 id="redis">Redis</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># macOS</span>
+brew<span class="w"> </span>install<span class="w"> </span>redis
+
+<span class="c1"># Linux</span>
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>redis-server
+
+<span class="c1"># Iniciar</span>
+brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>redis<span class="w">  </span><span class="c1"># macOS</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>redis-server<span class="w">  </span><span class="c1"># Linux</span>
+</code></pre></div>
+
+<h3 id="paso-4-configurar-env">Paso 4: Configurar .env</h3>
+<div class="codehilite"><pre><span></span><code>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+</code></pre></div>
+
+<p>Actualizar con URLs locales:</p>
+<div class="codehilite"><pre><span></span><code>API_GATEWAY_URL=http://127.0.0.1:8000
+AUTH_DATABASE_URL=mongodb://127.0.0.1:27017/auth_db
+REDIS_URL=redis://127.0.0.1:6379/0
+CURSOS_DATABASE_URL=postgresql://localhost/cursos_db
+EVALUACIONES_DATABASE_URL=postgresql://localhost/evaluaciones_db
+PROGRESO_DATABASE_URL=postgresql://localhost/progreso_db
+</code></pre></div>
+
+<h3 id="paso-5-ejecutar-servicios">Paso 5: Ejecutar servicios</h3>
+<p>Abrir <strong>5 terminales diferentes</strong>:</p>
+<p><strong>Terminal 1: Cursos Service</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>services/cursos
+uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--port<span class="w"> </span><span class="m">8002</span>
+</code></pre></div>
+
+<p><strong>Terminal 2: Evaluaciones Service</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>services/evaluaciones
+uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--port<span class="w"> </span><span class="m">8003</span>
+</code></pre></div>
+
+<p><strong>Terminal 3: Progreso Service</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>services/progreso
+uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--port<span class="w"> </span><span class="m">8004</span>
+</code></pre></div>
+
+<p><strong>Terminal 4: API Gateway</strong></p>
+<div class="codehilite"><pre><span></span><code>uvicorn<span class="w"> </span>api_gateway.main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+</code></pre></div>
+
+<p><strong>Terminal 5: Frontend</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>frontend
+python<span class="w"> </span>app.py
+</code></pre></div>
+
+<h3 id="acceder">Acceder</h3>
+<ul>
+<li>Frontend: http://127.0.0.1:5000</li>
+<li>Gateway: http://127.0.0.1:8000/docs</li>
+</ul>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="docker-port-already-in-use">Docker: "Port already in use"</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Ver qué está usando los puertos</span>
+lsof<span class="w"> </span>-i<span class="w"> </span>:5000
+lsof<span class="w"> </span>-i<span class="w"> </span>:8000
+
+<span class="c1"># Matar proceso</span>
+<span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span>&lt;PID&gt;
+
+<span class="c1"># O cambiar puertos en docker-compose.yml</span>
+</code></pre></div>
+
+<h3 id="postgresql-connection-refused">PostgreSQL: "Connection refused"</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Verificar que PostgreSQL está corriendo</span>
+brew<span class="w"> </span>services<span class="w"> </span>list<span class="w">  </span><span class="c1"># macOS</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>postgresql<span class="w">  </span><span class="c1"># Linux</span>
+
+<span class="c1"># Crear DBs si no existen</span>
+createdb<span class="w"> </span>cursos_db
+createdb<span class="w"> </span>evaluaciones_db
+createdb<span class="w"> </span>progreso_db
+</code></pre></div>
+
+<h3 id="mongodb-connection-refused">MongoDB: "Connection refused"</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Verificar conexión</span>
+mongo<span class="w"> </span>--eval<span class="w"> </span><span class="s2">&quot;db.version()&quot;</span>
+
+<span class="c1"># Iniciar si no corre</span>
+brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>mongodb-community<span class="w">  </span><span class="c1"># macOS</span>
+</code></pre></div>
+
+<h3 id="redis-connection-refused">Redis: "Connection refused"</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Verificar</span>
+redis-cli<span class="w"> </span>ping
+
+<span class="c1"># Iniciar</span>
+brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>redis<span class="w">  </span><span class="c1"># macOS</span>
+</code></pre></div>
+
+<h3 id="module-not-found-errors">"Module not found" errors</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Reinstalar dependencias</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>services/&lt;service&gt;/requirements.txt<span class="w"> </span>--force-reinstall
+
+<span class="c1"># O completamente</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>common/requirements.txt<span class="w">  </span><span class="c1"># Si existe</span>
+<span class="k">for</span><span class="w"> </span>service<span class="w"> </span><span class="k">in</span><span class="w"> </span>authentication<span class="w"> </span>cursos<span class="w"> </span>evaluaciones<span class="w"> </span>progreso<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>services/<span class="nv">$service</span>/requirements.txt
+<span class="k">done</span>
+</code></pre></div>
+
+<hr />
+<h2 id="comandos-utiles">Comandos Útiles</h2>
+<h3 id="docker-compose">Docker Compose</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Levantar en background</span>
+docker-compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build
+
+<span class="c1"># Ver logs de un servicio</span>
+docker-compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>cursos-service
+
+<span class="c1"># Ver logs de todos</span>
+docker-compose<span class="w"> </span>logs<span class="w"> </span>-f
+
+<span class="c1"># Parar servicios</span>
+docker-compose<span class="w"> </span>down
+
+<span class="c1"># Parar y eliminar volúmenes (⚠️ pierde datos)</span>
+docker-compose<span class="w"> </span>down<span class="w"> </span>-v
+
+<span class="c1"># Rebuild de una imagen</span>
+docker-compose<span class="w"> </span>build<span class="w"> </span>--no-cache<span class="w"> </span>auth-service
+
+<span class="c1"># Ejecutar comando en contenedor</span>
+docker-compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>cursos-service<span class="w"> </span>bash
+</code></pre></div>
+
+<h3 id="local-development">Local Development</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Tests</span>
+pytest<span class="w"> </span>tests/test_health.py<span class="w"> </span>-v
+
+<span class="c1"># Lint</span>
+flake8<span class="w"> </span>services/cursos/<span class="w"> </span>api-gateway/<span class="w"> </span>frontend/
+
+<span class="c1"># Syntax check</span>
+python<span class="w"> </span>-m<span class="w"> </span>py_compile<span class="w"> </span>services/cursos/main.py
+
+<span class="c1"># Build docs</span>
+mkdocs<span class="w"> </span>serve<span class="w">  </span><span class="c1"># http://127.0.0.1:8000/docs/</span>
+</code></pre></div>
+
+<hr />
+<h2 id="variables-de-entorno">Variables de Entorno</h2>
+<p>Ver <code>.env.example</code> para la lista completa. Principales:</p>
+<div class="codehilite"><pre><span></span><code>API_GATEWAY_URL=http://localhost:8000           # URL del gateway (usado por Frontend)
+AUTH_DATABASE_URL=mongodb://...                 # Connection string MongoDB
+REDIS_URL=redis://...                           # Redis URL
+JWT_SECRET=&lt;random-long-string&gt;                 # Clave secreta JWT
+CURSOS_DATABASE_URL=postgresql://...            # DB Cursos
+EVALUACIONES_DATABASE_URL=postgresql://...      # DB Evaluaciones
+PROGRESO_DATABASE_URL=postgresql://...          # DB Progreso
+FLASK_SECRET=&lt;random-string&gt;                    # Clave secreta Flask
+</code></pre></div>
+
+<p>Generar secrets seguros:</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import secrets; print(secrets.token_urlsafe(32))&quot;</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1426 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>🔧 Git - Guía Práctica de Commits por Sprint - Aprendelancia Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#git-guia-practica-de-commits-por-sprint" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Aprendelancia Docs" class="md-header__button md-logo" aria-label="Aprendelancia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Aprendelancia Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🔧 Git - Guía Práctica de Commits por Sprint
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Aprendelancia Docs" class="md-nav__button md-logo" aria-label="Aprendelancia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Aprendelancia Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup & Configuración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desarrollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entrega/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entrega Incremental
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-inicial-de-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración Inicial de Git
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-1-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔵 SPRINT 1: Autenticación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 SPRINT 1: Autenticación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inicio-del-sprint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inicio del Sprint
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-2-microservicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔵 SPRINT 2: Microservicios
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 SPRINT 2: Microservicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tarea-21-servicio-de-cursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea 2.1: Servicio de Cursos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-22-servicio-de-evaluaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea 2.2: Servicio de Evaluaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-23-servicio-de-progreso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea 2.3: Servicio de Progreso
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-3-api-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔵 SPRINT 3: API Gateway
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-4-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔵 SPRINT 4: Frontend
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-5-testing-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔵 SPRINT 5: Testing &amp; Deploy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flujo-de-trabajo-estandar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Flujo de Trabajo Estándar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Flujo de Trabajo Estándar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-cada-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para cada feature
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandos-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Comandos Útiles
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="git-guia-practica-de-commits-por-sprint">🔧 Git - Guía Práctica de Commits por Sprint</h1>
+<h2 id="configuracion-inicial-de-git">Configuración Inicial de Git</h2>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Configurar identidad global</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Tu Nombre&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;tu.email@ejemplo.com&quot;</span>
+
+<span class="c1"># Clonar repositorio</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ATUMBAC0/aprendelancia.git
+<span class="nb">cd</span><span class="w"> </span>aprendelancia
+
+<span class="c1"># Crear rama develop</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>develop
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>develop
+</code></pre></div>
+
+<hr />
+<h2 id="sprint-1-autenticacion">🔵 SPRINT 1: Autenticación</h2>
+<h3 id="inicio-del-sprint">Inicio del Sprint</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Crear rama para autenticación</span>
+git<span class="w"> </span>checkout<span class="w"> </span>develop
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>develop
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/auth-service
+
+<span class="c1"># Actualizar main.py con estructura base</span>
+git<span class="w"> </span>add<span class="w"> </span>services/authentication/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: init authentication service structure</span>
+
+<span class="s2">- Create authentication microservice folder</span>
+<span class="s2">- Add main.py, models.py, database.py</span>
+<span class="s2">- Add requirements.txt with dependencies</span>
+<span class="s2">- Add Dockerfile for containerization&quot;</span>
+
+<span class="c1"># Actualizar modelos de usuario</span>
+git<span class="w"> </span>add<span class="w"> </span>services/authentication/models.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(auth): add user model and database schema</span>
+
+<span class="s2">- Define User pydantic model</span>
+<span class="s2">- Add validation for email and password</span>
+<span class="s2">- Implement unique email constraint</span>
+<span class="s2">- Add role enum (estudiante, instructor, admin)&quot;</span>
+
+<span class="c1"># Configurar base de datos</span>
+git<span class="w"> </span>add<span class="w"> </span>services/authentication/database.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(auth): configure mongodb connection</span>
+
+<span class="s2">- Add MongoDB connection pool</span>
+<span class="s2">- Initialize default database</span>
+<span class="s2">- Create users collection</span>
+<span class="s2">- Add connection error handling&quot;</span>
+
+<span class="c1"># Agregar dependencias</span>
+git<span class="w"> </span>add<span class="w"> </span>services/authentication/requirements.txt
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;build(auth): add authentication dependencies</span>
+
+<span class="s2">- Add fastapi==0.104.1</span>
+<span class="s2">- Add pymongo==4.15.4</span>
+<span class="s2">- Add passlib[bcrypt]==1.7.4</span>
+<span class="s2">- Add python-jose[cryptography]==3.5.0</span>
+<span class="s2">- Add pydantic==2.5.0</span>
+<span class="s2">- Add uvicorn==0.24.0&quot;</span>
+
+<span class="c1"># Implementar registro</span>
+git<span class="w"> </span>add<span class="w"> </span>services/authentication/main.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(auth): implement user registration endpoint</span>
+
+<span class="s2">- Create POST /register endpoint</span>
+<span class="s2">- Add email validation</span>
+<span class="s2">- Add password hashing with passlib</span>
+<span class="s2">- Add duplicate email check</span>
+<span class="s2">- Return success message with user role&quot;</span>
+
+<span class="c1"># Implementar login</span>
+git<span class="w"> </span>add<span class="w"> </span>services/authentication/main.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(auth): implement login with JWT generation</span>
+
+<span class="s2">- Create POST /login endpoint</span>
+<span class="s2">- Add password verification</span>
+<span class="s2">- Generate access_token (60 min expiry)</span>
+<span class="s2">- Generate refresh_token (7 days expiry)</span>
+<span class="s2">- Store tokens in Redis</span>
+<span class="s2">- Return bearer token&quot;</span>
+
+<span class="c1"># Implementar refresh token</span>
+git<span class="w"> </span>add<span class="w"> </span>services/authentication/main.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(auth): implement token refresh endpoint</span>
+
+<span class="s2">- Create POST /refresh endpoint</span>
+<span class="s2">- Validate refresh token expiry</span>
+<span class="s2">- Generate new access token</span>
+<span class="s2">- Maintain user claims (email, role)</span>
+<span class="s2">- Return new access token&quot;</span>
+
+<span class="c1"># Agregar health check</span>
+git<span class="w"> </span>add<span class="w"> </span>services/authentication/main.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(auth): add health check endpoint</span>
+
+<span class="s2">- Create GET /health endpoint</span>
+<span class="s2">- Return service status</span>
+<span class="s2">- Check MongoDB connection</span>
+<span class="s2">- Return response time&quot;</span>
+
+<span class="c1"># Agregar Dockerfile</span>
+git<span class="w"> </span>add<span class="w"> </span>services/authentication/Dockerfile
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;build(auth): create dockerfile for authentication service</span>
+
+<span class="s2">- Use python:3.12-slim base image</span>
+<span class="s2">- Install dependencies from requirements.txt</span>
+<span class="s2">- Copy application code</span>
+<span class="s2">- Expose port 8001</span>
+<span class="s2">- Run uvicorn with hot reload&quot;</span>
+
+<span class="c1"># Integrar en docker-compose</span>
+git<span class="w"> </span>add<span class="w"> </span>docker-compose.yml
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;infra: add authentication service to docker-compose</span>
+
+<span class="s2">- Add auth-service container</span>
+<span class="s2">- Configure port 8001</span>
+<span class="s2">- Link to MongoDB (auth-db)</span>
+<span class="s2">- Set environment variables</span>
+<span class="s2">- Add health checks&quot;</span>
+
+<span class="c1"># Agregar tests</span>
+git<span class="w"> </span>add<span class="w"> </span>tests/auth/test_register.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;test(auth): add registration endpoint tests</span>
+
+<span class="s2">- Test successful registration</span>
+<span class="s2">- Test duplicate email prevention</span>
+<span class="s2">- Test weak password validation</span>
+<span class="s2">- Test invalid email rejection&quot;</span>
+
+git<span class="w"> </span>add<span class="w"> </span>tests/auth/test_login.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;test(auth): add login endpoint tests</span>
+
+<span class="s2">- Test successful login</span>
+<span class="s2">- Test JWT token generation</span>
+<span class="s2">- Test invalid credentials</span>
+<span class="s2">- Test token expiry&quot;</span>
+
+<span class="c1"># Documentación de variables de entorno</span>
+git<span class="w"> </span>add<span class="w"> </span>.env.example
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs(auth): add authentication environment variables</span>
+
+<span class="s2">- Add JWT_SECRET example</span>
+<span class="s2">- Add MongoDB connection URL</span>
+<span class="s2">- Add Redis connection URL</span>
+<span class="s2">- Add token expiry times&quot;</span>
+
+<span class="c1"># Mergear a develop</span>
+git<span class="w"> </span>add<span class="w"> </span>-A
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs(auth): finalize auth service documentation&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/auth-service
+<span class="c1"># Abrir Pull Request en GitHub</span>
+<span class="c1"># Después de review y aprobación:</span>
+git<span class="w"> </span>checkout<span class="w"> </span>develop
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>develop
+git<span class="w"> </span>merge<span class="w"> </span>--no-ff<span class="w"> </span>feature/auth-service
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>develop
+</code></pre></div>
+
+<hr />
+<h2 id="sprint-2-microservicios">🔵 SPRINT 2: Microservicios</h2>
+<h3 id="tarea-21-servicio-de-cursos">Tarea 2.1: Servicio de Cursos</h3>
+<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>develop
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>develop
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/cursos-service
+
+<span class="c1"># Estructura base</span>
+git<span class="w"> </span>add<span class="w"> </span>services/cursos/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(cursos): init cursos service structure</span>
+
+<span class="s2">- Create cursos microservice folder</span>
+<span class="s2">- Add main.py, models.py, database_sql.py</span>
+<span class="s2">- Add requirements.txt with postgresql dependencies</span>
+<span class="s2">- Add Dockerfile&quot;</span>
+
+<span class="c1"># Modelos de datos</span>
+git<span class="w"> </span>add<span class="w"> </span>services/cursos/models.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(cursos): define curso data models</span>
+
+<span class="s2">- Create Curso model with all fields</span>
+<span class="s2">- Add validation for curso data</span>
+<span class="s2">- Implement categoria enum</span>
+<span class="s2">- Add timestamps (created_at, updated_at)&quot;</span>
+
+<span class="c1"># Conexión a base de datos</span>
+git<span class="w"> </span>add<span class="w"> </span>services/cursos/database_sql.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(cursos): configure postgresql connection</span>
+
+<span class="s2">- Setup SQLAlchemy connection pool</span>
+<span class="s2">- Create cursos table schema</span>
+<span class="s2">- Add migration support</span>
+<span class="s2">- Implement connection error handling&quot;</span>
+
+<span class="c1"># CRUD endpoints</span>
+git<span class="w"> </span>add<span class="w"> </span>services/cursos/main.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(cursos): implement curso CRUD endpoints</span>
+
+<span class="s2">- GET /cursos - list all courses</span>
+<span class="s2">- GET /cursos/{id} - get course by id</span>
+<span class="s2">- POST /cursos - create new course (instructor)</span>
+<span class="s2">- PUT /cursos/{id} - update course</span>
+<span class="s2">- DELETE /cursos/{id} - delete course</span>
+<span class="s2">- GET /health - health check&quot;</span>
+
+<span class="c1"># Dockerfile</span>
+git<span class="w"> </span>add<span class="w"> </span>services/cursos/Dockerfile
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;build(cursos): create dockerfile for cursos service&quot;</span>
+
+<span class="c1"># Integrar en docker-compose</span>
+git<span class="w"> </span>add<span class="w"> </span>docker-compose.yml
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;infra: add cursos service to docker-compose&quot;</span>
+
+<span class="c1"># Tests</span>
+git<span class="w"> </span>add<span class="w"> </span>tests/cursos/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;test(cursos): add CRUD endpoint tests&quot;</span>
+
+<span class="c1"># Mergear</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/cursos-service
+<span class="c1"># PR, review, merge a develop</span>
+</code></pre></div>
+
+<h3 id="tarea-22-servicio-de-evaluaciones">Tarea 2.2: Servicio de Evaluaciones</h3>
+<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>develop
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>develop
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/evaluaciones-service
+
+<span class="c1"># Estructura base</span>
+git<span class="w"> </span>add<span class="w"> </span>services/evaluaciones/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(evaluaciones): init evaluaciones service structure&quot;</span>
+
+<span class="c1"># Modelos con auto-grading</span>
+git<span class="w"> </span>add<span class="w"> </span>services/evaluaciones/models.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(evaluaciones): define evaluation models with grading</span>
+
+<span class="s2">- Create Evaluacion model</span>
+<span class="s2">- Define Pregunta model with question types</span>
+<span class="s2">- Implement Respuesta model</span>
+<span class="s2">- Add auto-grading logic for multiple choice</span>
+<span class="s2">- Add punto calculation&quot;</span>
+
+<span class="c1"># Base de datos</span>
+git<span class="w"> </span>add<span class="w"> </span>services/evaluaciones/database_sql.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(evaluaciones): configure postgresql for evaluations&quot;</span>
+
+<span class="c1"># CRUD endpoints</span>
+git<span class="w"> </span>add<span class="w"> </span>services/evaluaciones/main.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(evaluaciones): implement evaluation CRUD endpoints&quot;</span>
+
+<span class="c1"># Auto-grading</span>
+git<span class="w"> </span>add<span class="w"> </span>services/evaluaciones/main.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(evaluaciones): implement automatic grading system</span>
+
+<span class="s2">- Auto-grade multiple choice questions</span>
+<span class="s2">- Calculate total score</span>
+<span class="s2">- Store results with timestamp</span>
+<span class="s2">- Return immediate feedback&quot;</span>
+
+<span class="c1"># Dockerfile</span>
+git<span class="w"> </span>add<span class="w"> </span>services/evaluaciones/Dockerfile
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;build(evaluaciones): create dockerfile for evaluaciones&quot;</span>
+
+<span class="c1"># Integrar en docker-compose</span>
+git<span class="w"> </span>add<span class="w"> </span>docker-compose.yml
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;infra: add evaluaciones service to docker-compose&quot;</span>
+
+<span class="c1"># Tests</span>
+git<span class="w"> </span>add<span class="w"> </span>tests/evaluaciones/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;test(evaluaciones): add evaluation endpoint tests&quot;</span>
+
+<span class="c1"># Mergear</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/evaluaciones-service
+</code></pre></div>
+
+<h3 id="tarea-23-servicio-de-progreso">Tarea 2.3: Servicio de Progreso</h3>
+<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>develop
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>develop
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/progreso-service
+
+<span class="c1"># Estructura base</span>
+git<span class="w"> </span>add<span class="w"> </span>services/progreso/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(progreso): init progreso service structure&quot;</span>
+
+<span class="c1"># Modelos de progreso</span>
+git<span class="w"> </span>add<span class="w"> </span>services/progreso/models.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(progreso): define progress tracking models</span>
+
+<span class="s2">- Create EstudianteProgreso model</span>
+<span class="s2">- Define CursoCompletado model</span>
+<span class="s2">- Add progress percentage calculation</span>
+<span class="s2">- Implement statistics models&quot;</span>
+
+<span class="c1"># Base de datos</span>
+git<span class="w"> </span>add<span class="w"> </span>services/progreso/database_sql.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(progreso): configure postgresql for progress tracking&quot;</span>
+
+<span class="c1"># Endpoints de progreso</span>
+git<span class="w"> </span>add<span class="w"> </span>services/progreso/main.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(progreso): implement progress tracking endpoints</span>
+
+<span class="s2">- GET /progreso/estudiantes/{id}/cursos - progress per course</span>
+<span class="s2">- GET /progreso/estudiantes/{id}/evaluaciones - grades</span>
+<span class="s2">- POST /progreso/estudiantes/{id}/marcar-completado - mark course done</span>
+<span class="s2">- GET /progreso/estadisticas - global statistics&quot;</span>
+
+<span class="c1"># Dockerfile</span>
+git<span class="w"> </span>add<span class="w"> </span>services/progreso/Dockerfile
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;build(progreso): create dockerfile for progreso service&quot;</span>
+
+<span class="c1"># Integrar en docker-compose</span>
+git<span class="w"> </span>add<span class="w"> </span>docker-compose.yml
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;infra: add progreso service to docker-compose&quot;</span>
+
+<span class="c1"># Tests</span>
+git<span class="w"> </span>add<span class="w"> </span>tests/progreso/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;test(progreso): add progress tracking tests&quot;</span>
+
+<span class="c1"># Mergear</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/progreso-service
+</code></pre></div>
+
+<hr />
+<h2 id="sprint-3-api-gateway">🔵 SPRINT 3: API Gateway</h2>
+<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>develop
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>develop
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/api-gateway
+
+<span class="c1"># Estructura base</span>
+git<span class="w"> </span>add<span class="w"> </span>api-gateway/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(gateway): init api gateway structure</span>
+
+<span class="s2">- Create api-gateway folder</span>
+<span class="s2">- Add main.py, requirements.txt</span>
+<span class="s2">- Configure FastAPI app&quot;</span>
+
+<span class="c1"># Dependencias</span>
+git<span class="w"> </span>add<span class="w"> </span>api-gateway/requirements.txt
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;build(gateway): add gateway dependencies</span>
+
+<span class="s2">- Add fastapi==0.104.1</span>
+<span class="s2">- Add httpx==0.25.0</span>
+<span class="s2">- Add python-dotenv==1.2.0</span>
+<span class="s2">- Add uvicorn==0.24.0&quot;</span>
+
+<span class="c1"># Rutas genéricas</span>
+git<span class="w"> </span>add<span class="w"> </span>api-gateway/main.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(gateway): implement generic routing for all services</span>
+
+<span class="s2">- Create router for /api/v1/{service}/{path}</span>
+<span class="s2">- Implement GET request forwarding</span>
+<span class="s2">- Implement POST request forwarding</span>
+<span class="s2">- Implement PUT request forwarding</span>
+<span class="s2">- Implement DELETE request forwarding&quot;</span>
+
+<span class="c1"># CORS</span>
+git<span class="w"> </span>add<span class="w"> </span>api-gateway/main.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(gateway): add cors middleware support</span>
+
+<span class="s2">- Enable CORS for frontend origin</span>
+<span class="s2">- Allow credentials</span>
+<span class="s2">- Set allowed headers and methods&quot;</span>
+
+<span class="c1"># Health monitoring</span>
+git<span class="w"> </span>add<span class="w"> </span>api-gateway/main.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(gateway): implement service health monitoring</span>
+
+<span class="s2">- GET /health returns gateway status</span>
+<span class="s2">- Check connection to all services</span>
+<span class="s2">- Return service availability</span>
+<span class="s2">- Track response times&quot;</span>
+
+<span class="c1"># Dockerfile</span>
+git<span class="w"> </span>add<span class="w"> </span>api-gateway/Dockerfile
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;build(gateway): create dockerfile for api gateway&quot;</span>
+
+<span class="c1"># Integrar en docker-compose</span>
+git<span class="w"> </span>add<span class="w"> </span>docker-compose.yml
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;infra: add api gateway to docker-compose</span>
+
+<span class="s2">- Configure port 8000</span>
+<span class="s2">- Link to all microservices</span>
+<span class="s2">- Set environment variables&quot;</span>
+
+<span class="c1"># Tests</span>
+git<span class="w"> </span>add<span class="w"> </span>tests/gateway/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;test(gateway): add gateway routing integration tests&quot;</span>
+
+<span class="c1"># Documentación</span>
+git<span class="w"> </span>add<span class="w"> </span>docs/API_REFERENCE.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs: add API reference documentation</span>
+
+<span class="s2">- Document all endpoints</span>
+<span class="s2">- Add request/response examples</span>
+<span class="s2">- Add authentication requirements&quot;</span>
+
+<span class="c1"># Mergear</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/api-gateway
+</code></pre></div>
+
+<hr />
+<h2 id="sprint-4-frontend">🔵 SPRINT 4: Frontend</h2>
+<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>develop
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>develop
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/frontend-complete
+
+<span class="c1"># Estructura base</span>
+git<span class="w"> </span>add<span class="w"> </span>frontend/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): init flask application structure</span>
+
+<span class="s2">- Create frontend folder with Flask app</span>
+<span class="s2">- Add templates, static folders</span>
+<span class="s2">- Configure app.py&quot;</span>
+
+<span class="c1"># Dependencias</span>
+git<span class="w"> </span>add<span class="w"> </span>frontend/requirements.txt
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;build(frontend): add flask dependencies</span>
+
+<span class="s2">- Add flask==3.0.0</span>
+<span class="s2">- Add requests==2.31.0</span>
+<span class="s2">- Add python-dotenv==1.2.0&quot;</span>
+
+<span class="c1"># Base de templates</span>
+git<span class="w"> </span>add<span class="w"> </span>frontend/templates/base.html
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): add base html template</span>
+
+<span class="s2">- Create responsive layout</span>
+<span class="s2">- Add navigation bar</span>
+<span class="s2">- Include CSS/JS references&quot;</span>
+
+<span class="c1"># Página de login</span>
+git<span class="w"> </span>add<span class="w"> </span>frontend/templates/login.html
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): create login page</span>
+
+<span class="s2">- Add email and password inputs</span>
+<span class="s2">- Add form validation</span>
+<span class="s2">- Add submit button</span>
+<span class="s2">- Add register link&quot;</span>
+
+git<span class="w"> </span>add<span class="w"> </span>frontend/app.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): implement login endpoint</span>
+
+<span class="s2">- Create POST /login handler</span>
+<span class="s2">- Call auth API</span>
+<span class="s2">- Store JWT token in session</span>
+<span class="s2">- Redirect to dashboard&quot;</span>
+
+<span class="c1"># Página de registro</span>
+git<span class="w"> </span>add<span class="w"> </span>frontend/templates/register.html
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): create registration page</span>
+
+<span class="s2">- Add form with all required fields</span>
+<span class="s2">- Add role selection</span>
+<span class="s2">- Add password confirmation</span>
+<span class="s2">- Add submit button&quot;</span>
+
+git<span class="w"> </span>add<span class="w"> </span>frontend/app.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): implement registration endpoint</span>
+
+<span class="s2">- Create POST /register handler</span>
+<span class="s2">- Call auth API</span>
+<span class="s2">- Validate form data</span>
+<span class="s2">- Handle registration errors&quot;</span>
+
+<span class="c1"># Dashboard</span>
+git<span class="w"> </span>add<span class="w"> </span>frontend/templates/dashboard.html
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): create dashboard page</span>
+
+<span class="s2">- Show welcome message</span>
+<span class="s2">- Display user information</span>
+<span class="s2">- Add links to main sections</span>
+<span class="s2">- Add logout button&quot;</span>
+
+<span class="c1"># Página de cursos</span>
+git<span class="w"> </span>add<span class="w"> </span>frontend/templates/cursos.html
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): create courses listing page</span>
+
+<span class="s2">- Display all available courses</span>
+<span class="s2">- Add course cards with info</span>
+<span class="s2">- Add enroll button</span>
+<span class="s2">- Add search/filter&quot;</span>
+
+git<span class="w"> </span>add<span class="w"> </span>frontend/templates/curso_detalle.html
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): create course detail page</span>
+
+<span class="s2">- Show course information</span>
+<span class="s2">- List course content</span>
+<span class="s2">- Display instructor info</span>
+<span class="s2">- Add progress bar&quot;</span>
+
+git<span class="w"> </span>add<span class="w"> </span>frontend/templates/curso_crear.html
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): create course creation form</span>
+
+<span class="s2">- Add form for course details</span>
+<span class="s2">- Add rich text editor for description</span>
+<span class="s2">- Add category selector</span>
+<span class="s2">- Add publish button (instructor only)&quot;</span>
+
+git<span class="w"> </span>add<span class="w"> </span>frontend/app.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): implement courses endpoints</span>
+
+<span class="s2">- GET /cursos - list courses</span>
+<span class="s2">- GET /cursos/{id} - course detail</span>
+<span class="s2">- POST /cursos/crear - create course (instructor)</span>
+<span class="s2">- POST /cursos/{id}/enrollar - enroll in course&quot;</span>
+
+<span class="c1"># Página de evaluaciones</span>
+git<span class="w"> </span>add<span class="w"> </span>frontend/templates/evaluaciones.html
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): create evaluations listing page</span>
+
+<span class="s2">- Display available evaluations</span>
+<span class="s2">- Show evaluation info</span>
+<span class="s2">- Add take test button</span>
+<span class="s2">- Show past results&quot;</span>
+
+git<span class="w"> </span>add<span class="w"> </span>frontend/templates/evaluacion_realizar.html
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): create evaluation form</span>
+
+<span class="s2">- Display questions one by one</span>
+<span class="s2">- Add timer for evaluation</span>
+<span class="s2">- Show question progress</span>
+<span class="s2">- Prevent backwards navigation&quot;</span>
+
+git<span class="w"> </span>add<span class="w"> </span>frontend/templates/resultados.html
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): create results page</span>
+
+<span class="s2">- Show evaluation score</span>
+<span class="s2">- Display correct/incorrect answers</span>
+<span class="s2">- Show answer explanations</span>
+<span class="s2">- Option to review evaluation&quot;</span>
+
+git<span class="w"> </span>add<span class="w"> </span>frontend/app.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): implement evaluation endpoints</span>
+
+<span class="s2">- GET /evaluaciones - list evaluations</span>
+<span class="s2">- GET /evaluaciones/{id} - start evaluation</span>
+<span class="s2">- POST /evaluaciones/{id}/submit - submit answers</span>
+<span class="s2">- GET /resultados/{id} - view results&quot;</span>
+
+<span class="c1"># Página de progreso</span>
+git<span class="w"> </span>add<span class="w"> </span>frontend/templates/progreso.html
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): create progress tracking page</span>
+
+<span class="s2">- Show enrolled courses</span>
+<span class="s2">- Display progress bars</span>
+<span class="s2">- Show estimated completion</span>
+<span class="s2">- List achievements&quot;</span>
+
+git<span class="w"> </span>add<span class="w"> </span>frontend/templates/estadisticas.html
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): create statistics dashboard</span>
+
+<span class="s2">- Show learning statistics</span>
+<span class="s2">- Display charts and graphs</span>
+<span class="s2">- Show performance metrics</span>
+<span class="s2">- Compare with averages&quot;</span>
+
+git<span class="w"> </span>add<span class="w"> </span>frontend/app.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): implement progress endpoints</span>
+
+<span class="s2">- GET /progreso - student progress</span>
+<span class="s2">- GET /estadisticas - statistics dashboard</span>
+<span class="s2">- GET /certificados - earned certificates&quot;</span>
+
+<span class="c1"># Styling</span>
+git<span class="w"> </span>add<span class="w"> </span>frontend/static/style.css
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;style(frontend): add complete styling</span>
+
+<span class="s2">- Create consistent color scheme</span>
+<span class="s2">- Add responsive breakpoints</span>
+<span class="s2">- Style all form elements</span>
+<span class="s2">- Add hover effects and transitions&quot;</span>
+
+git<span class="w"> </span>add<span class="w"> </span>frontend/static/responsive.css
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;style(frontend): add responsive design</span>
+
+<span class="s2">- Mobile-first approach</span>
+<span class="s2">- Tablet breakpoints</span>
+<span class="s2">- Desktop optimizations</span>
+<span class="s2">- Print styles&quot;</span>
+
+<span class="c1"># JavaScript</span>
+git<span class="w"> </span>add<span class="w"> </span>frontend/static/js/validation.js
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): add client-side validation</span>
+
+<span class="s2">- Validate email format</span>
+<span class="s2">- Check password strength</span>
+<span class="s2">- Validate required fields</span>
+<span class="s2">- Show validation messages&quot;</span>
+
+git<span class="w"> </span>add<span class="w"> </span>frontend/static/js/timer.js
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): add evaluation timer</span>
+
+<span class="s2">- Display countdown timer</span>
+<span class="s2">- Warn when time is running out</span>
+<span class="s2">- Auto-submit when time expires&quot;</span>
+
+git<span class="w"> </span>add<span class="w"> </span>frontend/static/chart.js
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(frontend): add chart library for statistics</span>
+
+<span class="s2">- Include Chart.js library</span>
+<span class="s2">- Create progress charts</span>
+<span class="s2">- Create performance graphs</span>
+<span class="s2">- Create achievement visualizations&quot;</span>
+
+<span class="c1"># Dockerfile</span>
+git<span class="w"> </span>add<span class="w"> </span>frontend/Dockerfile
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;build(frontend): create dockerfile for frontend</span>
+
+<span class="s2">- Use python:3.12-slim base</span>
+<span class="s2">- Install dependencies</span>
+<span class="s2">- Copy application code</span>
+<span class="s2">- Expose port 5000&quot;</span>
+
+<span class="c1"># Integrar en docker-compose</span>
+git<span class="w"> </span>add<span class="w"> </span>docker-compose.yml
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;infra: add frontend service to docker-compose</span>
+
+<span class="s2">- Configure port 5000</span>
+<span class="s2">- Link to api-gateway</span>
+<span class="s2">- Set environment variables&quot;</span>
+
+<span class="c1"># Mergear</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/frontend-complete
+</code></pre></div>
+
+<hr />
+<h2 id="sprint-5-testing-deploy">🔵 SPRINT 5: Testing &amp; Deploy</h2>
+<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>develop
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>develop
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/testing-and-docs
+
+<span class="c1"># Tests unitarios</span>
+git<span class="w"> </span>add<span class="w"> </span>tests/unit/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;test: add comprehensive unit tests</span>
+
+<span class="s2">- Test auth logic</span>
+<span class="s2">- Test models validation</span>
+<span class="s2">- Test database operations</span>
+<span class="s2">- Target coverage &gt; 80%&quot;</span>
+
+<span class="c1"># Tests de integración</span>
+git<span class="w"> </span>add<span class="w"> </span>tests/integration/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;test: add integration tests</span>
+
+<span class="s2">- Test end-to-end workflows</span>
+<span class="s2">- Test API communication</span>
+<span class="s2">- Test database persistence</span>
+<span class="s2">- Test error handling&quot;</span>
+
+<span class="c1"># Tests de UI</span>
+git<span class="w"> </span>add<span class="w"> </span>tests/ui/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;test: add UI/frontend tests</span>
+
+<span class="s2">- Test page rendering</span>
+<span class="s2">- Test form validation</span>
+<span class="s2">- Test navigation</span>
+<span class="s2">- Test responsive design&quot;</span>
+
+<span class="c1"># CI/CD</span>
+git<span class="w"> </span>add<span class="w"> </span>.github/workflows/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;ci: add github actions workflow</span>
+
+<span class="s2">- Run tests on every push</span>
+<span class="s2">- Generate coverage report</span>
+<span class="s2">- Build docker images</span>
+<span class="s2">- Check code quality&quot;</span>
+
+<span class="c1"># README</span>
+git<span class="w"> </span>add<span class="w"> </span>README.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs: add project README</span>
+
+<span class="s2">- Add project description</span>
+<span class="s2">- Include quick start guide</span>
+<span class="s2">- Add technology stack</span>
+<span class="s2">- Include screenshots&quot;</span>
+
+<span class="c1"># Setup guide</span>
+git<span class="w"> </span>add<span class="w"> </span>docs/SETUP.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs: add setup instructions</span>
+
+<span class="s2">- Prerequisites</span>
+<span class="s2">- Installation steps</span>
+<span class="s2">- Running docker-compose</span>
+<span class="s2">- Troubleshooting&quot;</span>
+
+<span class="c1"># API Reference</span>
+git<span class="w"> </span>add<span class="w"> </span>docs/API_REFERENCE.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs: add complete API reference</span>
+
+<span class="s2">- Document all endpoints</span>
+<span class="s2">- Include request/response examples</span>
+<span class="s2">- Add authentication info</span>
+<span class="s2">- Add error codes&quot;</span>
+
+<span class="c1"># Architecture</span>
+git<span class="w"> </span>add<span class="w"> </span>docs/ARCHITECTURE.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs: add architecture documentation</span>
+
+<span class="s2">- System design overview</span>
+<span class="s2">- Component interactions</span>
+<span class="s2">- Database schema</span>
+<span class="s2">- Deployment diagram&quot;</span>
+
+<span class="c1"># Deployment guide</span>
+git<span class="w"> </span>add<span class="w"> </span>DEPLOY.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;ops: add deployment instructions</span>
+
+<span class="s2">- Production setup</span>
+<span class="s2">- Environment configuration</span>
+<span class="s2">- Database backup procedures</span>
+<span class="s2">- Monitoring setup&quot;</span>
+
+<span class="c1"># Environment template</span>
+git<span class="w"> </span>add<span class="w"> </span>.env.example
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;infra: add complete environment variables template</span>
+
+<span class="s2">- All service configurations</span>
+<span class="s2">- Database connections</span>
+<span class="s2">- Security settings</span>
+<span class="s2">- API keys&quot;</span>
+
+<span class="c1"># Coverage report</span>
+git<span class="w"> </span>add<span class="w"> </span>coverage/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;ci: generate coverage report</span>
+
+<span class="s2">- Achieve &gt; 80% coverage</span>
+<span class="s2">- Identify untested code</span>
+<span class="s2">- Add missing tests&quot;</span>
+
+<span class="c1"># Final merge</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/testing-and-docs
+<span class="c1"># PR, review, merge a develop</span>
+
+<span class="c1"># Crear release</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+git<span class="w"> </span>merge<span class="w"> </span>--no-ff<span class="w"> </span>develop
+git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Release version 1.0&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main<span class="w"> </span>--tags
+</code></pre></div>
+
+<hr />
+<h2 id="flujo-de-trabajo-estandar">📊 Flujo de Trabajo Estándar</h2>
+<h3 id="para-cada-feature">Para cada feature</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 1. Crear rama</span>
+git<span class="w"> </span>checkout<span class="w"> </span>develop
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>develop
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/nombre-descriptivo
+
+<span class="c1"># 2. Hacer cambios y commits</span>
+git<span class="w"> </span>add<span class="w"> </span>archivos
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;tipo(scope): descripción&quot;</span>
+
+<span class="c1"># 3. Push a GitHub</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/nombre-descriptivo
+
+<span class="c1"># 4. Crear Pull Request</span>
+<span class="c1"># Ir a GitHub y abrir PR</span>
+
+<span class="c1"># 5. Después de aprobación, mergear</span>
+git<span class="w"> </span>checkout<span class="w"> </span>develop
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>develop
+git<span class="w"> </span>merge<span class="w"> </span>--no-ff<span class="w"> </span>feature/nombre-descriptivo
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>develop
+
+<span class="c1"># 6. Eliminar rama local</span>
+git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>feature/nombre-descriptivo
+</code></pre></div>
+
+<hr />
+<h2 id="comandos-utiles">🔍 Comandos Útiles</h2>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Ver estado</span>
+git<span class="w"> </span>status
+
+<span class="c1"># Ver historial</span>
+git<span class="w"> </span>log<span class="w"> </span>--oneline
+
+<span class="c1"># Ver diferencias</span>
+git<span class="w"> </span>diff
+
+<span class="c1"># Deshacer cambios</span>
+git<span class="w"> </span>checkout<span class="w"> </span>--<span class="w"> </span>archivo
+git<span class="w"> </span>reset<span class="w"> </span>HEAD<span class="w"> </span>archivo
+
+<span class="c1"># Ver ramas</span>
+git<span class="w"> </span>branch<span class="w"> </span>-a
+
+<span class="c1"># Cambiar entre ramas</span>
+git<span class="w"> </span>checkout<span class="w"> </span>nombre-rama
+
+<span class="c1"># Stash (guardar cambios temporalmente)</span>
+git<span class="w"> </span>stash
+git<span class="w"> </span>stash<span class="w"> </span>pop
+
+<span class="c1"># Ver remotes</span>
+git<span class="w"> </span>remote<span class="w"> </span>-v
+
+<span class="c1"># Actualizar main branch</span>
+git<span class="w"> </span>fetch<span class="w"> </span>origin<span class="w"> </span>main
+git<span class="w"> </span>rebase<span class="w"> </span>origin/main
+
+<span class="c1"># Squash commits</span>
+git<span class="w"> </span>rebase<span class="w"> </span>-i<span class="w"> </span>HEAD~3
+
+<span class="c1"># Cherry-pick (aplicar commit específico)</span>
+git<span class="w"> </span>cherry-pick<span class="w"> </span>hash-commit
+</code></pre></div>
+
+<hr />
+<p><strong>Última actualización:</strong> 15 de Noviembre de 2025</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
