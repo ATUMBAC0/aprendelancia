@@ -2,16 +2,19 @@
 """
 Script para poblar las bases de datos con cursos de Ingeniería en Sistemas,
 evaluaciones y progreso de estudiantes.
+
+Following copilot-instructions.md punto 1, 3:
+- Data flows: Frontend calls the API Gateway (API_GATEWAY_URL)
+- Gateway forwarding: GET /api/v1/{service}/{path} forwards to service URL
 """
 
 import requests
 import random
 from datetime import datetime
 
-# URLs de los microservicios
-BASE_CURSOS = "http://localhost:8002"
-BASE_EVALUACIONES = "http://localhost:8003"
-BASE_PROGRESO = "http://localhost:8004"
+# Punto 1 copilot-instructions: "Frontend calls the API Gateway"
+# Punto 3: "GET /api/v1/{service}/{path} forwards to the service URL"
+BASE_URL = "http://localhost:8000/api/v1"
 
 # Cursos de Ingeniería en Sistemas
 CURSOS = [
@@ -132,7 +135,7 @@ ESTUDIANTES = [
 
 
 def create_cursos():
-    """Crear cursos en el servicio de cursos"""
+    """Crear cursos usando el API Gateway (copilot-instructions punto 3)"""
     print("\n" + "="*60)
     print("📚 CREANDO CURSOS DE INGENIERÍA EN SISTEMAS")
     print("="*60 + "\n")
@@ -140,14 +143,20 @@ def create_cursos():
     created = 0
     for curso in CURSOS:
         try:
-            response = requests.post(f"{BASE_CURSOS}/cursos", json=curso, timeout=5)
+            # Punto 3: "POST /api/v1/{service}/{path} forwards JSON bodies"
+            response = requests.post(f"{BASE_URL}/cursos/cursos", json=curso, timeout=5)
             if response.status_code in [200, 201]:
                 print(f"✅ Curso creado: {curso['titulo']} (Rating: {curso['rating']}/5.0)")
                 created += 1
             else:
-                print(f"⚠️  Error al crear {curso['titulo']}: {response.status_code}")
+                # Show error detail for debugging
+                try:
+                    error = response.json()
+                    print(f"⚠️  Error al crear {curso['titulo']}: {response.status_code} - {error}")
+                except:
+                    print(f"⚠️  Error al crear {curso['titulo']}: {response.status_code}")
         except Exception as e:
-            print(f"❌ Error conectando al servicio de cursos: {e}")
+            print(f"❌ Error conectando al API Gateway: {e}")
             break
     
     print(f"\n📊 RESUMEN: {created}/{len(CURSOS)} cursos creados")
@@ -155,7 +164,7 @@ def create_cursos():
 
 
 def create_evaluaciones():
-    """Crear evaluaciones para cada curso"""
+    """Crear evaluaciones para cada curso usando el API Gateway"""
     print("\n" + "="*60)
     print("📝 CREANDO EVALUACIONES")
     print("="*60 + "\n")
@@ -171,12 +180,17 @@ def create_evaluaciones():
             }
             
             try:
-                response = requests.post(f"{BASE_EVALUACIONES}/evaluaciones", json=evaluacion, timeout=5)
+                # Punto 3: Gateway forwarding pattern
+                response = requests.post(f"{BASE_URL}/evaluaciones/evaluaciones", json=evaluacion, timeout=5)
                 if response.status_code in [200, 201]:
                     print(f"✅ Evaluación creada: {evaluacion['titulo']}")
                     created += 1
                 else:
-                    print(f"⚠️  Error: {response.status_code}")
+                    try:
+                        error = response.json()
+                        print(f"⚠️  Error: {response.status_code} - {error}")
+                    except:
+                        print(f"⚠️  Error: {response.status_code}")
             except Exception as e:
                 print(f"❌ Error: {e}")
                 break
@@ -186,7 +200,7 @@ def create_evaluaciones():
 
 
 def create_progreso():
-    """Crear progreso aleatorio para estudiantes en cursos"""
+    """Crear progreso aleatorio para estudiantes en cursos usando el API Gateway"""
     print("\n" + "="*60)
     print("📈 CREANDO PROGRESO DE ESTUDIANTES")
     print("="*60 + "\n")
@@ -195,7 +209,6 @@ def create_progreso():
     for estudiante in ESTUDIANTES:
         print(f"\n👤 Estudiante: {estudiante}")
         
-        # Cada estudiante tiene progreso en 3-6 cursos aleatorios
         num_cursos = random.randint(3, 6)
         cursos_asignados = random.sample(CURSOS, num_cursos)
         
@@ -210,7 +223,6 @@ def create_progreso():
                 "fecha_ultima_actividad": datetime.now().strftime("%Y-%m-%d")
             }
             
-            # Crear calificaciones aleatorias si el curso está avanzado
             if progreso['completado_pct'] > 50:
                 calificacion = round(random.uniform(70, 100), 1)
                 progreso['calificacion'] = calificacion
@@ -220,7 +232,8 @@ def create_progreso():
                 print(f"  ⏳ {curso['titulo']}: {progreso['completado_pct']}% | En progreso")
             
             try:
-                response = requests.post(f"{BASE_PROGRESO}/progreso", json=progreso, timeout=5)
+                # Punto 3: Gateway forwarding pattern
+                response = requests.post(f"{BASE_URL}/progreso/progreso", json=progreso, timeout=5)
                 if response.status_code in [200, 201]:
                     created += 1
             except Exception as e:
@@ -236,25 +249,22 @@ def main():
     print("🚀 INICIANDO POBLACIÓN DE DATOS")
     print("="*60)
     
-    # Verificar que los servicios estén disponibles
-    services = {
-        "Cursos": BASE_CURSOS,
-        "Evaluaciones": BASE_EVALUACIONES,
-        "Progreso": BASE_PROGRESO
-    }
+    # Punto 2 copilot-instructions: "Health endpoints: Each service should provide a /health endpoint"
+    services = ["cursos", "evaluaciones", "progreso"]
     
-    print("\n🔍 Verificando servicios...")
+    print("\n🔍 Verificando servicios via API Gateway...")
     all_ok = True
-    for name, url in services.items():
+    for service in services:
         try:
-            response = requests.get(f"{url}/health", timeout=2)
+            # Punto 3: "GET /api/v1/{service}/{path}"
+            response = requests.get(f"{BASE_URL}/{service}/health", timeout=2)
             if response.status_code == 200:
-                print(f"  ✅ {name}: OK")
+                print(f"  ✅ {service.capitalize()}: OK")
             else:
-                print(f"  ⚠️  {name}: Respuesta {response.status_code}")
+                print(f"  ⚠️  {service.capitalize()}: Respuesta {response.status_code}")
                 all_ok = False
         except Exception as e:
-            print(f"  ❌ {name}: No disponible ({e})")
+            print(f"  ❌ {service.capitalize()}: No disponible ({e})")
             all_ok = False
     
     if not all_ok:
