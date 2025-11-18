@@ -15,6 +15,7 @@ BASE_PROGRESO = "http://localhost:8004"
 
 # Cursos de Ingeniería en Sistemas
 CURSOS = [
+    
     {
         "id": "ing-sys-001",
         "titulo": "Fundamentos de Programación",
