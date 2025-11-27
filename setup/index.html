@@ -1,18 +1,22 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="es" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Plataforma de Cursos Online - Documentación">
+      
+      
+        <meta name="author" content="Equipo Aprendelandia">
       
       
       
         <link rel="prev" href="../architecture/">
       
       
-        <link rel="next" href="../api/">
+        <link rel="next" href="../development/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Setup & Configuración - Aprendelancia Docs</title>
+        <title>Setup & Instalación - Aprendelandia Docs</title>
       
     
     
@@ -60,6 +64,8 @@
   
     
     
+      
+    
     
     
     
@@ -72,8 +78,8 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup-configuracion" class="md-skip">
-          Skip to content
+        <a href="#configuracion" class="md-skip">
+          Saltar a contenido
         </a>
       
     </div>
@@ -87,8 +93,8 @@
   
 
 <header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Aprendelancia Docs" class="md-header__button md-logo" aria-label="Aprendelancia Docs" data-md-component="logo">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Aprendelandia Docs" class="md-header__button md-logo" aria-label="Aprendelandia Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -102,13 +108,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Aprendelancia Docs
+            Aprendelandia Docs
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Setup & Configuración
+              Setup & Instalación
             
           </span>
         </div>
@@ -116,7 +122,33 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -130,27 +162,29 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="Buscar">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            Inicializando búsqueda
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -160,6 +194,18 @@
 </div>
       
     
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ATUMBAC0/aprendelancia" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ATUMBAC0/aprendelancia
+  </div>
+</a>
+      </div>
     
   </nav>
   
@@ -184,16 +230,28 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Aprendelancia Docs" class="md-nav__button md-logo" aria-label="Aprendelancia Docs" data-md-component="logo">
+    <a href=".." title="Aprendelandia Docs" class="md-nav__button md-logo" aria-label="Aprendelandia Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Aprendelancia Docs
+    Aprendelandia Docs
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ATUMBAC0/aprendelancia" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ATUMBAC0/aprendelancia
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -211,7 +269,7 @@
   <span class="md-ellipsis">
     
   
-    Home
+    Inicio
   
 
     
@@ -226,6 +284,55 @@
     
       
       
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guías
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guías
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
   
@@ -250,9 +357,10 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
     
@@ -274,7 +382,7 @@
   <span class="md-ellipsis">
     
   
-    Setup & Configuración
+    Setup & Instalación
   
 
     
@@ -292,7 +400,7 @@
   <span class="md-ellipsis">
     
   
-    Setup & Configuración
+    Setup & Instalación
   
 
     
@@ -304,7 +412,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
   
   
   
@@ -313,7 +421,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      Tabla de contenidos
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -651,36 +759,10 @@
     </li>
   
 
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API Reference
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
+              
+            
+              
+                
   
   
   
@@ -705,9 +787,146 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencia API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metodología
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Metodología
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
   
@@ -732,6 +951,70 @@
     </li>
   
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INCREMENTAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flujo Incremental
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GIT_COMMITS_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía de Commits Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
   </ul>
 </nav>
@@ -746,7 +1029,7 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
   
   
   
@@ -755,7 +1038,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      Tabla de contenidos
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -1102,265 +1385,243 @@
                   
 
 
+  
+  
 
-<h1 id="setup-configuracion">Setup &amp; Configuración</h1>
-<h2 id="requisitos-previos">Requisitos Previos</h2>
+
+<h1 id="configuracion">Configuración<a class="headerlink" href="#configuracion" title="Permanent link">&para;</a></h1>
+<h2 id="requisitos-previos">Requisitos Previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Docker</strong> y <strong>Docker Compose</strong> (recomendado)</li>
 <li>O <strong>Python 3.8+</strong>, <strong>PostgreSQL</strong>, <strong>MongoDB</strong>, <strong>Redis</strong> (para local)</li>
 <li><strong>Git</strong></li>
 </ul>
-<h2 id="opcion-1-docker-compose-recomendado">Opción 1: Docker Compose (Recomendado)</h2>
-<h3 id="paso-1-clonar-el-repositorio">Paso 1: Clonar el repositorio</h3>
-<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>&lt;repo-url&gt;
-<span class="nb">cd</span><span class="w"> </span>aprendelancia
+<h2 id="opcion-1-docker-compose-recomendado">Opción 1: Docker Compose (Recomendado)<a class="headerlink" href="#opcion-1-docker-compose-recomendado" title="Permanent link">&para;</a></h2>
+<h3 id="paso-1-clonar-el-repositorio">Paso 1: Clonar el repositorio<a class="headerlink" href="#paso-1-clonar-el-repositorio" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>&lt;repo-url&gt;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>aprendelancia
 </code></pre></div>
-
-<h3 id="paso-2-configurar-variables-de-entorno">Paso 2: Configurar variables de entorno</h3>
-<div class="codehilite"><pre><span></span><code>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+<h3 id="paso-2-configurar-variables-de-entorno">Paso 2: Configurar variables de entorno<a class="headerlink" href="#paso-2-configurar-variables-de-entorno" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
 </code></pre></div>
-
 <p>Revisar y ajustar <code>.env</code> si es necesario.</p>
-<h3 id="paso-3-levantar-los-servicios">Paso 3: Levantar los servicios</h3>
-<div class="codehilite"><pre><span></span><code>docker-compose<span class="w"> </span>up<span class="w"> </span>--build
+<h3 id="paso-3-levantar-los-servicios">Paso 3: Levantar los servicios<a class="headerlink" href="#paso-3-levantar-los-servicios" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>--build
 </code></pre></div>
-
 <p>Esto toma unos minutos en la primera ejecución. Verás algo como:</p>
-<div class="codehilite"><pre><span></span><code>auth-service_1         | Uvicorn running on http://0.0.0.0:8001
-cursos-service_1       | Uvicorn running on http://0.0.0.0:8002
-evaluaciones-service_1 | Uvicorn running on http://0.0.0.0:8003
-progreso-service_1     | Uvicorn running on http://0.0.0.0:8004
-api-gateway_1          | Uvicorn running on http://0.0.0.0:8000
-frontend_1             | Running on http://0.0.0.0:5000
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>auth-service_1         | Uvicorn running on http://0.0.0.0:8001
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>cursos-service_1       | Uvicorn running on http://0.0.0.0:8002
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>evaluaciones-service_1 | Uvicorn running on http://0.0.0.0:8003
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>progreso-service_1     | Uvicorn running on http://0.0.0.0:8004
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>api-gateway_1          | Uvicorn running on http://0.0.0.0:8000
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>frontend_1             | Running on http://0.0.0.0:5000
 </code></pre></div>
-
-<h3 id="paso-4-acceder-a-la-plataforma">Paso 4: Acceder a la plataforma</h3>
+<h3 id="paso-4-acceder-a-la-plataforma">Paso 4: Acceder a la plataforma<a class="headerlink" href="#paso-4-acceder-a-la-plataforma" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Frontend</strong>: http://localhost:5000</li>
 <li><strong>Gateway API Docs</strong>: http://localhost:8000/docs</li>
 <li><strong>Gateway Redoc</strong>: http://localhost:8000/redoc</li>
 </ul>
-<h3 id="paso-5-probar">Paso 5: Probar</h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Health check</span>
-curl<span class="w"> </span>http://localhost:8000/api/v1/auth/health
-curl<span class="w"> </span>http://localhost:8000/api/v1/cursos/health
+<h3 id="paso-5-probar">Paso 5: Probar<a class="headerlink" href="#paso-5-probar" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Health check</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>curl<span class="w"> </span>http://localhost:8000/api/v1/auth/health
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>curl<span class="w"> </span>http://localhost:8000/api/v1/cursos/health
 </code></pre></div>
-
 <hr />
-<h2 id="opcion-2-local-sin-docker">Opción 2: Local (Sin Docker)</h2>
-<h3 id="paso-1-crear-virtualenv">Paso 1: Crear virtualenv</h3>
-<div class="codehilite"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
-<span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">  </span><span class="c1"># Linux/Mac</span>
-<span class="c1"># o</span>
-.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">  </span><span class="c1"># Windows</span>
+<h2 id="opcion-2-local-sin-docker">Opción 2: Local (Sin Docker)<a class="headerlink" href="#opcion-2-local-sin-docker" title="Permanent link">&para;</a></h2>
+<h3 id="paso-1-crear-virtualenv">Paso 1: Crear virtualenv<a class="headerlink" href="#paso-1-crear-virtualenv" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">  </span><span class="c1"># Linux/Mac</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># o</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">  </span><span class="c1"># Windows</span>
 </code></pre></div>
-
-<h3 id="paso-2-instalar-dependencias">Paso 2: Instalar dependencias</h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Instalaciones comunes</span>
-pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip<span class="w"> </span>setuptools
-
-<span class="c1"># Services</span>
-<span class="k">for</span><span class="w"> </span>service<span class="w"> </span><span class="k">in</span><span class="w"> </span>authentication<span class="w"> </span>cursos<span class="w"> </span>evaluaciones<span class="w"> </span>progreso<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">  </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>services/<span class="nv">$service</span>/requirements.txt
-<span class="k">done</span>
-
-<span class="c1"># Gateway y Frontend</span>
-pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>api-gateway/requirements.txt
-pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>frontend/requirements.txt
+<h3 id="paso-2-instalar-dependencias">Paso 2: Instalar dependencias<a class="headerlink" href="#paso-2-instalar-dependencias" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Instalaciones comunes</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip<span class="w"> </span>setuptools
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Services</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">for</span><span class="w"> </span>service<span class="w"> </span><span class="k">in</span><span class="w"> </span>authentication<span class="w"> </span>cursos<span class="w"> </span>evaluaciones<span class="w"> </span>progreso<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>services/<span class="nv">$service</span>/requirements.txt
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">done</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># Gateway y Frontend</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>api-gateway/requirements.txt
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>frontend/requirements.txt
 </code></pre></div>
-
-<h3 id="paso-3-configurar-bases-de-datos">Paso 3: Configurar bases de datos</h3>
-<h4 id="postgresql">PostgreSQL</h4>
-<div class="codehilite"><pre><span></span><code><span class="c1"># macOS</span>
-brew<span class="w"> </span>install<span class="w"> </span>postgresql
-
-<span class="c1"># Linux (Debian/Ubuntu)</span>
-sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>postgresql<span class="w"> </span>postgresql-contrib
-
-<span class="c1"># Crear bases de datos</span>
-createdb<span class="w"> </span>cursos_db
-createdb<span class="w"> </span>evaluaciones_db
-createdb<span class="w"> </span>progreso_db
-
-<span class="c1"># Verificar</span>
-psql<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;cursos_db|evaluaciones_db|progreso_db&quot;</span>
+<h3 id="paso-3-configurar-bases-de-datos">Paso 3: Configurar bases de datos<a class="headerlink" href="#paso-3-configurar-bases-de-datos" title="Permanent link">&para;</a></h3>
+<h4 id="postgresql">PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># macOS</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>brew<span class="w"> </span>install<span class="w"> </span>postgresql
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Linux (Debian/Ubuntu)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>postgresql<span class="w"> </span>postgresql-contrib
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Crear bases de datos</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>createdb<span class="w"> </span>cursos_db
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>createdb<span class="w"> </span>evaluaciones_db
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>createdb<span class="w"> </span>progreso_db
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1"># Verificar</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>psql<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;cursos_db|evaluaciones_db|progreso_db&quot;</span>
 </code></pre></div>
-
-<h4 id="mongodb">MongoDB</h4>
-<div class="codehilite"><pre><span></span><code><span class="c1"># macOS</span>
-brew<span class="w"> </span>install<span class="w"> </span>mongodb-community
-
-<span class="c1"># Linux (Debian/Ubuntu)</span>
-sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mongodb
-
-<span class="c1"># Iniciar servicio</span>
-brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>mongodb-community<span class="w">  </span><span class="c1"># macOS</span>
-sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mongod<span class="w">  </span><span class="c1"># Linux</span>
+<h4 id="mongodb">MongoDB<a class="headerlink" href="#mongodb" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># macOS</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>brew<span class="w"> </span>install<span class="w"> </span>mongodb-community
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Linux (Debian/Ubuntu)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mongodb
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Iniciar servicio</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>mongodb-community<span class="w">  </span><span class="c1"># macOS</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mongod<span class="w">  </span><span class="c1"># Linux</span>
 </code></pre></div>
-
-<h4 id="redis">Redis</h4>
-<div class="codehilite"><pre><span></span><code><span class="c1"># macOS</span>
-brew<span class="w"> </span>install<span class="w"> </span>redis
-
-<span class="c1"># Linux</span>
-sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>redis-server
-
-<span class="c1"># Iniciar</span>
-brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>redis<span class="w">  </span><span class="c1"># macOS</span>
-sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>redis-server<span class="w">  </span><span class="c1"># Linux</span>
+<h4 id="redis">Redis<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># macOS</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>brew<span class="w"> </span>install<span class="w"> </span>redis
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Linux</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>redis-server
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Iniciar</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>redis<span class="w">  </span><span class="c1"># macOS</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>redis-server<span class="w">  </span><span class="c1"># Linux</span>
 </code></pre></div>
-
-<h3 id="paso-4-configurar-env">Paso 4: Configurar .env</h3>
-<div class="codehilite"><pre><span></span><code>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+<h3 id="paso-4-configurar-env">Paso 4: Configurar .env<a class="headerlink" href="#paso-4-configurar-env" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
 </code></pre></div>
-
 <p>Actualizar con URLs locales:</p>
-<div class="codehilite"><pre><span></span><code>API_GATEWAY_URL=http://127.0.0.1:8000
-AUTH_DATABASE_URL=mongodb://127.0.0.1:27017/auth_db
-REDIS_URL=redis://127.0.0.1:6379/0
-CURSOS_DATABASE_URL=postgresql://localhost/cursos_db
-EVALUACIONES_DATABASE_URL=postgresql://localhost/evaluaciones_db
-PROGRESO_DATABASE_URL=postgresql://localhost/progreso_db
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>API_GATEWAY_URL=http://127.0.0.1:8000
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>AUTH_DATABASE_URL=mongodb://127.0.0.1:27017/auth_db
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>REDIS_URL=redis://127.0.0.1:6379/0
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>CURSOS_DATABASE_URL=postgresql://localhost/cursos_db
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>EVALUACIONES_DATABASE_URL=postgresql://localhost/evaluaciones_db
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>PROGRESO_DATABASE_URL=postgresql://localhost/progreso_db
 </code></pre></div>
-
-<h3 id="paso-5-ejecutar-servicios">Paso 5: Ejecutar servicios</h3>
+<h3 id="paso-5-ejecutar-servicios">Paso 5: Ejecutar servicios<a class="headerlink" href="#paso-5-ejecutar-servicios" title="Permanent link">&para;</a></h3>
 <p>Abrir <strong>5 terminales diferentes</strong>:</p>
-<p><strong>Terminal 1: Cursos Service</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>services/cursos
-uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--port<span class="w"> </span><span class="m">8002</span>
-</code></pre></div>
-
-<p><strong>Terminal 2: Evaluaciones Service</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>services/evaluaciones
-uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--port<span class="w"> </span><span class="m">8003</span>
-</code></pre></div>
-
-<p><strong>Terminal 3: Progreso Service</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>services/progreso
-uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--port<span class="w"> </span><span class="m">8004</span>
-</code></pre></div>
-
-<p><strong>Terminal 4: API Gateway</strong></p>
-<div class="codehilite"><pre><span></span><code>uvicorn<span class="w"> </span>api_gateway.main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
-</code></pre></div>
-
-<p><strong>Terminal 5: Frontend</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>frontend
-python<span class="w"> </span>app.py
-</code></pre></div>
-
-<h3 id="acceder">Acceder</h3>
+<p><strong>Terminal 1: Cursos Service</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">cd</span><span class="w"> </span>services/cursos
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--port<span class="w"> </span><span class="m">8002</span>
+</code></pre></div></p>
+<p><strong>Terminal 2: Evaluaciones Service</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">cd</span><span class="w"> </span>services/evaluaciones
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--port<span class="w"> </span><span class="m">8003</span>
+</code></pre></div></p>
+<p><strong>Terminal 3: Progreso Service</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">cd</span><span class="w"> </span>services/progreso
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--port<span class="w"> </span><span class="m">8004</span>
+</code></pre></div></p>
+<p><strong>Terminal 4: API Gateway</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>uvicorn<span class="w"> </span>api_gateway.main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+</code></pre></div></p>
+<p><strong>Terminal 5: Frontend</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">cd</span><span class="w"> </span>frontend
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>python<span class="w"> </span>app.py
+</code></pre></div></p>
+<h3 id="acceder">Acceder<a class="headerlink" href="#acceder" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Frontend: http://127.0.0.1:5000</li>
 <li>Gateway: http://127.0.0.1:8000/docs</li>
 </ul>
 <hr />
-<h2 id="troubleshooting">Troubleshooting</h2>
-<h3 id="docker-port-already-in-use">Docker: "Port already in use"</h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Ver qué está usando los puertos</span>
-lsof<span class="w"> </span>-i<span class="w"> </span>:5000
-lsof<span class="w"> </span>-i<span class="w"> </span>:8000
-
-<span class="c1"># Matar proceso</span>
-<span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span>&lt;PID&gt;
-
-<span class="c1"># O cambiar puertos en docker-compose.yml</span>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="docker-port-already-in-use">Docker: "Port already in use"<a class="headerlink" href="#docker-port-already-in-use" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Ver qué está usando los puertos</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>lsof<span class="w"> </span>-i<span class="w"> </span>:5000
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>lsof<span class="w"> </span>-i<span class="w"> </span>:8000
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="c1"># Matar proceso</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span>&lt;PID&gt;
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="c1"># O cambiar puertos en docker-compose.yml</span>
 </code></pre></div>
-
-<h3 id="postgresql-connection-refused">PostgreSQL: "Connection refused"</h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Verificar que PostgreSQL está corriendo</span>
-brew<span class="w"> </span>services<span class="w"> </span>list<span class="w">  </span><span class="c1"># macOS</span>
-systemctl<span class="w"> </span>status<span class="w"> </span>postgresql<span class="w">  </span><span class="c1"># Linux</span>
-
-<span class="c1"># Crear DBs si no existen</span>
-createdb<span class="w"> </span>cursos_db
-createdb<span class="w"> </span>evaluaciones_db
-createdb<span class="w"> </span>progreso_db
+<h3 id="postgresql-connection-refused">PostgreSQL: "Connection refused"<a class="headerlink" href="#postgresql-connection-refused" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Verificar que PostgreSQL está corriendo</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>brew<span class="w"> </span>services<span class="w"> </span>list<span class="w">  </span><span class="c1"># macOS</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>systemctl<span class="w"> </span>status<span class="w"> </span>postgresql<span class="w">  </span><span class="c1"># Linux</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1"># Crear DBs si no existen</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>createdb<span class="w"> </span>cursos_db
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>createdb<span class="w"> </span>evaluaciones_db
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>createdb<span class="w"> </span>progreso_db
 </code></pre></div>
-
-<h3 id="mongodb-connection-refused">MongoDB: "Connection refused"</h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Verificar conexión</span>
-mongo<span class="w"> </span>--eval<span class="w"> </span><span class="s2">&quot;db.version()&quot;</span>
-
-<span class="c1"># Iniciar si no corre</span>
-brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>mongodb-community<span class="w">  </span><span class="c1"># macOS</span>
+<h3 id="mongodb-connection-refused">MongoDB: "Connection refused"<a class="headerlink" href="#mongodb-connection-refused" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Verificar conexión</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>mongo<span class="w"> </span>--eval<span class="w"> </span><span class="s2">&quot;db.version()&quot;</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># Iniciar si no corre</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>mongodb-community<span class="w">  </span><span class="c1"># macOS</span>
 </code></pre></div>
-
-<h3 id="redis-connection-refused">Redis: "Connection refused"</h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Verificar</span>
-redis-cli<span class="w"> </span>ping
-
-<span class="c1"># Iniciar</span>
-brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>redis<span class="w">  </span><span class="c1"># macOS</span>
+<h3 id="redis-connection-refused">Redis: "Connection refused"<a class="headerlink" href="#redis-connection-refused" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Verificar</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>redis-cli<span class="w"> </span>ping
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1"># Iniciar</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>redis<span class="w">  </span><span class="c1"># macOS</span>
 </code></pre></div>
-
-<h3 id="module-not-found-errors">"Module not found" errors</h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Reinstalar dependencias</span>
-pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>services/&lt;service&gt;/requirements.txt<span class="w"> </span>--force-reinstall
-
-<span class="c1"># O completamente</span>
-python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
-<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
-pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>common/requirements.txt<span class="w">  </span><span class="c1"># Si existe</span>
-<span class="k">for</span><span class="w"> </span>service<span class="w"> </span><span class="k">in</span><span class="w"> </span>authentication<span class="w"> </span>cursos<span class="w"> </span>evaluaciones<span class="w"> </span>progreso<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">  </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>services/<span class="nv">$service</span>/requirements.txt
-<span class="k">done</span>
+<h3 id="module-not-found-errors">"Module not found" errors<a class="headerlink" href="#module-not-found-errors" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Reinstalar dependencias</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>services/&lt;service&gt;/requirements.txt<span class="w"> </span>--force-reinstall
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># O completamente</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>common/requirements.txt<span class="w">  </span><span class="c1"># Si existe</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="k">for</span><span class="w"> </span>service<span class="w"> </span><span class="k">in</span><span class="w"> </span>authentication<span class="w"> </span>cursos<span class="w"> </span>evaluaciones<span class="w"> </span>progreso<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">  </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>services/<span class="nv">$service</span>/requirements.txt
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="k">done</span>
 </code></pre></div>
-
 <hr />
-<h2 id="comandos-utiles">Comandos Útiles</h2>
-<h3 id="docker-compose">Docker Compose</h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Levantar en background</span>
-docker-compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build
-
-<span class="c1"># Ver logs de un servicio</span>
-docker-compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>cursos-service
-
-<span class="c1"># Ver logs de todos</span>
-docker-compose<span class="w"> </span>logs<span class="w"> </span>-f
-
-<span class="c1"># Parar servicios</span>
-docker-compose<span class="w"> </span>down
-
-<span class="c1"># Parar y eliminar volúmenes (⚠️ pierde datos)</span>
-docker-compose<span class="w"> </span>down<span class="w"> </span>-v
-
-<span class="c1"># Rebuild de una imagen</span>
-docker-compose<span class="w"> </span>build<span class="w"> </span>--no-cache<span class="w"> </span>auth-service
-
-<span class="c1"># Ejecutar comando en contenedor</span>
-docker-compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>cursos-service<span class="w"> </span>bash
+<h2 id="comandos-utiles">Comandos Útiles<a class="headerlink" href="#comandos-utiles" title="Permanent link">&para;</a></h2>
+<h3 id="docker-compose">Docker Compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Levantar en background</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># Ver logs de un servicio</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>docker-compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>cursos-service
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="c1"># Ver logs de todos</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>docker-compose<span class="w"> </span>logs<span class="w"> </span>-f
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="c1"># Parar servicios</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>docker-compose<span class="w"> </span>down
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="c1"># Parar y eliminar volúmenes (⚠️ pierde datos)</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>docker-compose<span class="w"> </span>down<span class="w"> </span>-v
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="c1"># Rebuild de una imagen</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>docker-compose<span class="w"> </span>build<span class="w"> </span>--no-cache<span class="w"> </span>auth-service
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a>
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="c1"># Ejecutar comando en contenedor</span>
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>docker-compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>cursos-service<span class="w"> </span>bash
 </code></pre></div>
-
-<h3 id="local-development">Local Development</h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Tests</span>
-pytest<span class="w"> </span>tests/test_health.py<span class="w"> </span>-v
-
-<span class="c1"># Lint</span>
-flake8<span class="w"> </span>services/cursos/<span class="w"> </span>api-gateway/<span class="w"> </span>frontend/
-
-<span class="c1"># Syntax check</span>
-python<span class="w"> </span>-m<span class="w"> </span>py_compile<span class="w"> </span>services/cursos/main.py
-
-<span class="c1"># Build docs</span>
-mkdocs<span class="w"> </span>serve<span class="w">  </span><span class="c1"># http://127.0.0.1:8000/docs/</span>
+<h3 id="local-development">Local Development<a class="headerlink" href="#local-development" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Tests</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>pytest<span class="w"> </span>tests/test_health.py<span class="w"> </span>-v
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Lint</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>flake8<span class="w"> </span>services/cursos/<span class="w"> </span>api-gateway/<span class="w"> </span>frontend/
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="c1"># Syntax check</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>python<span class="w"> </span>-m<span class="w"> </span>py_compile<span class="w"> </span>services/cursos/main.py
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="c1"># Build docs</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>mkdocs<span class="w"> </span>serve<span class="w">  </span><span class="c1"># http://127.0.0.1:8000/docs/</span>
 </code></pre></div>
-
 <hr />
-<h2 id="variables-de-entorno">Variables de Entorno</h2>
+<h2 id="variables-de-entorno">Variables de Entorno<a class="headerlink" href="#variables-de-entorno" title="Permanent link">&para;</a></h2>
 <p>Ver <code>.env.example</code> para la lista completa. Principales:</p>
-<div class="codehilite"><pre><span></span><code>API_GATEWAY_URL=http://localhost:8000           # URL del gateway (usado por Frontend)
-AUTH_DATABASE_URL=mongodb://...                 # Connection string MongoDB
-REDIS_URL=redis://...                           # Redis URL
-JWT_SECRET=&lt;random-long-string&gt;                 # Clave secreta JWT
-CURSOS_DATABASE_URL=postgresql://...            # DB Cursos
-EVALUACIONES_DATABASE_URL=postgresql://...      # DB Evaluaciones
-PROGRESO_DATABASE_URL=postgresql://...          # DB Progreso
-FLASK_SECRET=&lt;random-string&gt;                    # Clave secreta Flask
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>API_GATEWAY_URL=http://localhost:8000           # URL del gateway (usado por Frontend)
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>AUTH_DATABASE_URL=mongodb://...                 # Connection string MongoDB
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>REDIS_URL=redis://...                           # Redis URL
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>JWT_SECRET=&lt;random-long-string&gt;                 # Clave secreta JWT
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>CURSOS_DATABASE_URL=postgresql://...            # DB Cursos
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>EVALUACIONES_DATABASE_URL=postgresql://...      # DB Evaluaciones
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>PROGRESO_DATABASE_URL=postgresql://...          # DB Progreso
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>FLASK_SECRET=&lt;random-string&gt;                    # Clave secreta Flask
 </code></pre></div>
-
 <p>Generar secrets seguros:</p>
-<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import secrets; print(secrets.token_urlsafe(32))&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import secrets; print(secrets.token_urlsafe(32))&quot;</span>
 </code></pre></div>
 
 
@@ -1382,6 +1643,12 @@ FLASK_SECRET=&lt;random-string&gt;                    # Clave secreta Flask
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
       </main>
       
         <footer class="md-footer">
@@ -1394,6 +1661,22 @@ FLASK_SECRET=&lt;random-string&gt;                    # Clave secreta Flask
     Made with
     <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
       Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ATUMBAC0/aprendelancia" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
     </a>
   
 </div>
@@ -1411,7 +1694,7 @@ FLASK_SECRET=&lt;random-string&gt;                    # Clave secreta Flask
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotation"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
