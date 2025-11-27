@@ -1,14 +1,14 @@
-# Aprendelancia — Plataforma de Cursos Online
+# Aprendelandia — Plataforma de Cursos Online
 
-Bienvenido a Aprendelancia, una plataforma de cursos online escalable basada en **microservicios**.
+Bienvenido a Aprendelandia, una plataforma de cursos online escalable basada en **microservicios**.
 
 ## ¿Qué es esto?
 
 Una arquitectura de **FastAPI + Flask + PostgreSQL + MongoDB** con un API Gateway centralizado. Perfecta para:
 
-- 📚 Estudiantes: registrarse, ver cursos, responder evaluaciones, tracking de progreso
-- 👨‍🏫 Instructores: gestionar cursos, módulos, lecciones, cuestionarios
-- 🔐 Seguridad: JWT tokens, roles (estudiante/instructor), autenticación
+-  Estudiantes: registrarse, ver cursos, responder evaluaciones, tracking de progreso
+-  Instructores: gestionar cursos, módulos, lecciones, cuestionarios
+-  Seguridad: JWT tokens, roles (estudiante/instructor), autenticación
 
 ## Inicio Rápido (Docker)
 

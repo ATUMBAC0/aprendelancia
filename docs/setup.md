@@ -1,4 +1,4 @@
-# Setup & Configuración
+# Configuración
 
 ## Requisitos Previos
 

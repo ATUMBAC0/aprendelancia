@@ -55,6 +55,11 @@ class UserCreate(BaseModel):
     foto_url: Optional[str] = None
 
 
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+
 class UserProfile(BaseModel):
     id: str
     email: str
@@ -148,7 +153,7 @@ def register(user: UserCreate):
 
 
 @app.post("/login", response_model=Token)
-def login(form_data: UserCreate):
+def login(form_data: UserLogin):
     user = users.find_one({"email": form_data.email})
     if not user:
         raise HTTPException(status_code=401, detail="Incorrect email or password")

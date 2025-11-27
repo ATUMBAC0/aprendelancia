@@ -106,9 +106,16 @@ def _call_service(method, service, path, **kwargs):
             return result
         else:
             print(f"[DEBUG] Error response: {r.text[:200]}")  # Debug
+            # Intentar extraer el mensaje de error del servidor
+            try:
+                error_data = r.json()
+                error_msg = error_data.get('detail', 'Error desconocido')
+                return {'error': error_msg}
+            except:
+                return {'error': f'Error {r.status_code}'}
     except Exception as e:
         print(f"[DEBUG] Exception calling service: {e}")  # Debug
-        pass
+        return {'error': str(e)}
     return None
 
 
@@ -163,19 +170,22 @@ def register():
         password = request.form.get('password')
         role = request.form.get('role', 'estudiante')
         nombre = request.form.get('nombre', '')
+        apellido = request.form.get('apellido', '')
         
         resp = _call_service('POST', 'auth', 'register', json={
             'email': email,
             'password': password,
             'role': role,
-            'nombre': nombre
+            'nombre': nombre,
+            'apellido': apellido
         })
         
-        if resp:
+        if resp and 'error' not in resp:
             flash('Usuario registrado exitosamente. Por favor inicia sesión.', 'success')
             return redirect(url_for('login'))
         else:
-            flash('Error al registrar usuario', 'error')
+            error_msg = resp.get('error', 'Error al registrar usuario') if resp else 'Error al conectar con el servidor'
+            flash(error_msg, 'error')
     
     return render_template('register.html')
 

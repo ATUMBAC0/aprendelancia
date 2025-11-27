@@ -1,21 +1,97 @@
 #Documentation de plataforma Aprendelandia
 # enlace local de documentacion 
-#sleep 5 && curl -s http://127.0.0.1:8080 | head -20
+#sleep 5 && curl -s http://127.0.0.1:8090 | head -20
 
-site_name: Aprendelancia Docs
+site_name: Aprendelandia Docs
+site_description: Plataforma de Cursos Online - Documentación
+site_author: Equipo Aprendelandia
+
+# Repository (copilot-instructions punto 7)
+repo_name: ATUMBAC0/aprendelancia
+repo_url: https://github.com/ATUMBAC0/aprendelancia
+edit_uri: edit/main/docs/
+
+# Theme
 theme:
   name: material
+  language: es
   palette:
-    primary: blue
-    accent: orange
-nav:
-  - Home: index.md
-  - Arquitectura: architecture.md
-  - Setup & Configuración: setup.md
-  - API Reference: api.md
-  - Desarrollo: development.md
-  - Entrega Incremental: entrega.md
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: orange
+      toggle:
+        icon: material/brightness-7
+        name: Cambiar a modo oscuro
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: orange
+      toggle:
+        icon: material/brightness-4
+        name: Cambiar a modo claro
+  
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotation
+  
+  icon:
+    repo: fontawesome/brands/github
+
+# Plugins
+plugins:
+  - search:
+      lang: es
+
+# Docs directory
 docs_dir: docs
+
+# Markdown extensions
 markdown_extensions:
-  - codehilite
-  - extra
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - tables
+  - attr_list
+  - md_in_html
+
+# Navigation - Solo archivos que EXISTEN (copilot-instructions punto 7)
+nav:
+  - Inicio: index.md
+  - Guías:
+      - Arquitectura: architecture.md
+      - Setup & Instalación: setup.md
+      - Desarrollo: development.md
+  - API:
+      - Referencia API: api.md
+  - Metodología:
+      - Entrega Incremental: entrega.md
+      - Flujo Incremental: INCREMENTAL.md
+      - Guía de Commits Git: GIT_COMMITS_GUIDE.md
+
+# Extra
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ATUMBAC0/aprendelancia

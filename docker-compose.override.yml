@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   auth-service:
     # Override para desarrollo: monta código local y usa hot-reload

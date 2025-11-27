@@ -293,3 +293,29 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,flask,macos
+
+# Project specific
+# Docker volumes and data
+*.sqlite
+*.db
+
+# MkDocs site output
+site/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+.gitignore.check
